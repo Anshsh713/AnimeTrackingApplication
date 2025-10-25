@@ -2,41 +2,53 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function AnimeList() {
-  // State to store the list of anime fetched from the backend
+  // States
   const [animeList, setAnimeList] = useState([]);
-
-  // State to store the ID of the anime currently being edited
   const [editingAnime, setEditingAnime] = useState(null);
-
-  // State to store the form data while editing an anime
   const [editData, setEditData] = useState({});
-
-  // State to store the current filter (All, Watching, Completed, etc.)
   const [filter, setFilter] = useState("All");
 
-  // Filter anime based on selected filter
-  const filteredAnime = animeList.filter((anime) => {
-    return filter === "All" || anime.status === filter;
-  });
+  // Get token from localStorage
+  const token = localStorage.getItem("token");
 
-  // Fetch all anime from the backend
-  const fetchAnime = async () => {
-    const res = await axios.get("http://localhost:5000/api/anime");
-    setAnimeList(res.data);
+  // Axios config with auth header
+  const axiosConfig = {
+    headers: { Authorization: `Bearer ${token}` },
   };
 
-  // Fetch anime when the component mounts
+  // Fetch anime from backend
+  const fetchAnime = async () => {
+    try {
+      // ✅ Get token from localStorage
+      const token = localStorage.getItem("token");
+      const axiosConfig = { headers: { Authorization: `Bearer ${token}` } };
+
+      // Make request with token
+      const res = await axios.get(
+        "http://localhost:5000/api/anime",
+        axiosConfig
+      );
+      setAnimeList(res.data);
+    } catch (err) {
+      console.error(
+        "Failed to fetch anime:",
+        err.response?.data || err.message
+      );
+    }
+  };
+
+  // Fetch on mount
   useEffect(() => {
     fetchAnime();
   }, []);
 
-  // Delete an anime by ID and refresh the list
+  // Delete anime
   const deleteAnime = async (id) => {
-    await axios.delete(`http://localhost:5000/api/anime/${id}`);
+    await axios.delete(`http://localhost:5000/api/anime/${id}`, axiosConfig);
     fetchAnime();
   };
 
-  // Prepare an anime for editing
+  // Edit setup
   const handleEdit = (anime) => {
     setEditingAnime(anime._id);
     setEditData({
@@ -47,12 +59,21 @@ export default function AnimeList() {
     });
   };
 
-  // Save the edited anime and refresh the list
+  // Save edited anime
   const handleSave = async (id) => {
-    await axios.put(`http://localhost:5000/api/anime/${id}`, editData);
-    setEditingAnime(null); // Exit edit mode
-    fetchAnime(); // Refresh the list
+    await axios.put(
+      `http://localhost:5000/api/anime/${id}`,
+      editData,
+      axiosConfig
+    );
+    setEditingAnime(null);
+    fetchAnime();
   };
+
+  // Filter list
+  const filteredAnime = animeList.filter(
+    (anime) => filter === "All" || anime.status === filter
+  );
 
   return (
     <div className="p-4 space-y-4">
@@ -70,10 +91,10 @@ export default function AnimeList() {
         ].map((status) => (
           <button
             key={status}
-            onClick={() => setFilter(status)} // Update the filter state
+            onClick={() => setFilter(status)}
             className={`px-3 py-1 rounded ${
               filter === status
-                ? "bg-blue-600 text-white" // Highlight selected filter
+                ? "bg-blue-600 text-white"
                 : "bg-gray-200 hover:bg-gray-300"
             }`}
           >
@@ -82,11 +103,10 @@ export default function AnimeList() {
         ))}
       </div>
 
-      {/* If no anime available */}
+      {/* Anime Cards */}
       {filteredAnime.length === 0 ? (
         <p className="text-gray-500">No anime added yet.</p>
       ) : (
-        // Display anime cards
         filteredAnime.map((anime) => (
           <div
             key={anime._id}
@@ -95,7 +115,6 @@ export default function AnimeList() {
             {editingAnime === anime._id ? (
               // Edit Mode
               <div className="space-y-2 w-full">
-                {/* Title input */}
                 <input
                   className="border rounded p-1 w-full"
                   value={editData.title}
@@ -104,7 +123,6 @@ export default function AnimeList() {
                   }
                 />
                 <div className="flex gap-2">
-                  {/* Episodes watched input */}
                   <input
                     type="number"
                     className="border rounded p-1 w-1/3"
@@ -116,7 +134,6 @@ export default function AnimeList() {
                       })
                     }
                   />
-                  {/* Total episodes input */}
                   <input
                     type="number"
                     className="border rounded p-1 w-1/3"
@@ -128,7 +145,6 @@ export default function AnimeList() {
                       })
                     }
                   />
-                  {/* Status select dropdown */}
                   <select
                     className="border rounded p-1 w-1/3"
                     value={editData.status}
@@ -143,7 +159,6 @@ export default function AnimeList() {
                     <option>Plan to Watch</option>
                   </select>
                 </div>
-                {/* Save and Cancel buttons */}
                 <div className="flex gap-2 mt-2">
                   <button
                     onClick={() => handleSave(anime._id)}
@@ -160,7 +175,7 @@ export default function AnimeList() {
                 </div>
               </div>
             ) : (
-              // Display Mode
+              // View Mode
               <>
                 <div>
                   <h3 className="text-lg font-semibold">{anime.title}</h3>
@@ -170,14 +185,12 @@ export default function AnimeList() {
                   </p>
                 </div>
                 <div className="flex gap-2">
-                  {/* Edit button */}
                   <button
                     onClick={() => handleEdit(anime)}
                     className="bg-blue-500 text-white px-3 py-1 rounded"
                   >
                     Edit
                   </button>
-                  {/* Delete button */}
                   <button
                     onClick={() => deleteAnime(anime._id)}
                     className="bg-red-500 text-white px-3 py-1 rounded"

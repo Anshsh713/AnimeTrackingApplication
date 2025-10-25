@@ -1,37 +1,21 @@
-// Import the Express library to create a router
+// Import modules
 import express from "express";
-
-// Import controller functions that handle different anime-related operations
+import { protect } from "../middleware/authMiddleware.js";
 import {
-  getAllAnime, // Get all anime from the database
-  createAnime, // Add a new anime
-  updateAnime, // Update an existing anime
-  deleteAnime, // Delete an anime
+  getAllAnime,
+  createAnime,
+  updateAnime,
+  deleteAnime,
 } from "../controllers/animeController.js";
 
-// Create a new router instance using Express
+// Create router
 const router = express.Router();
 
-/**
- * 🧩 Define API routes for Anime operations
- * Each route corresponds to a function in the controller
- */
+// Routes
+router.get("/", protect, getAllAnime); // Get all anime
+router.post("/", protect, createAnime); // Add new anime (protected)
+router.put("/:id", protect, updateAnime); // Update anime by ID (protected)
+router.delete("/:id", protect, deleteAnime); // Delete anime by ID (protected)
 
-// ✅ GET request → Fetch all anime
-// Example: GET /api/anime
-router.get("/", getAllAnime);
-
-// ✅ POST request → Add a new anime entry
-// Example: POST /api/anime
-router.post("/", createAnime);
-
-// ✅ PUT request → Update an anime by its ID
-// Example: PUT /api/anime/65432abcd123
-router.put("/:id", updateAnime);
-
-// ✅ DELETE request → Remove an anime by its ID
-// Example: DELETE /api/anime/65432abcd123
-router.delete("/:id", deleteAnime);
-
-// Export the router so it can be used in the main server file (e.g., server.js)
+// Export router
 export default router;

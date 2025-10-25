@@ -1,53 +1,58 @@
-// Import React hooks and Axios for HTTP requests
+// Import React hooks and Axios
 import React, { useState } from "react";
 import axios from "axios";
 
-// AddAnimeForm component — allows users to add a new anime
+// AddAnimeForm component
 export default function AddAnimeForm({ onAdded }) {
-  // 🧠 useState to track form input values
+  // Form state
   const [formData, setFormData] = useState({
-    title: "", // Anime title
-    episodesWatched: 0, // Number of episodes already watched
-    totalEpisodes: 0, // Total episodes in the anime
-    status: "Plan to Watch", // Default watching status
+    title: "",
+    episodesWatched: 0,
+    totalEpisodes: 0,
+    status: "Plan to Watch",
   });
 
-  /**
-   * 🔄 handleChange updates formData whenever an input changes
-   * [e.target.name] dynamically updates the correct field
-   */
+  // Get token from localStorage
+  const token = localStorage.getItem("token");
+  const axiosConfig = { headers: { Authorization: `Bearer ${token}` } };
+
+  // Update form state on input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  /**
-   * 🟢 handleSubmit sends formData to the backend via POST request
-   * - Prevents default form submission
-   * - Calls the backend API to add a new anime
-   * - Resets the form
-   * - Calls onAdded() to refresh the anime list in parent component
-   */
+  // Submit form data to backend
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Stop page reload
+    e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/anime", formData); // Send POST request
-      // Reset form fields
+      // ✅ Get token before sending request
+      const token = localStorage.getItem("token");
+      const axiosConfig = { headers: { Authorization: `Bearer ${token}` } };
+
+      await axios.post(
+        "http://localhost:5000/api/anime",
+        formData,
+        axiosConfig
+      );
+
       setFormData({
         title: "",
         episodesWatched: 0,
         totalEpisodes: 0,
         status: "Plan to Watch",
       });
-      onAdded(); // Refresh anime list in parent component
+      onAdded();
     } catch (err) {
-      console.error("❌ Error adding anime:", err);
+      console.error(
+        "❌ Error adding anime:",
+        err.response?.data || err.message
+      );
     }
   };
 
-  // 🎨 JSX for the form UI
   return (
     <form
-      onSubmit={handleSubmit} // Handle form submission
+      onSubmit={handleSubmit}
       style={{
         padding: "20px",
         background: "#f4f4f4",
@@ -57,13 +62,12 @@ export default function AddAnimeForm({ onAdded }) {
     >
       <h2>Add New Anime</h2>
 
-      {/* Input for anime title */}
       <input
         type="text"
         name="title"
         placeholder="Title"
         value={formData.title}
-        onChange={handleChange} // Updates state on typing
+        onChange={handleChange}
         required
         style={{
           display: "block",
@@ -73,7 +77,6 @@ export default function AddAnimeForm({ onAdded }) {
         }}
       />
 
-      {/* Input for episodes watched */}
       <input
         type="number"
         name="episodesWatched"
@@ -88,7 +91,6 @@ export default function AddAnimeForm({ onAdded }) {
         }}
       />
 
-      {/* Input for total episodes */}
       <input
         type="number"
         name="totalEpisodes"
@@ -103,7 +105,6 @@ export default function AddAnimeForm({ onAdded }) {
         }}
       />
 
-      {/* Dropdown to select watching status */}
       <select
         name="status"
         value={formData.status}
@@ -122,7 +123,6 @@ export default function AddAnimeForm({ onAdded }) {
         <option>Plan to Watch</option>
       </select>
 
-      {/* Submit button */}
       <button
         type="submit"
         style={{
