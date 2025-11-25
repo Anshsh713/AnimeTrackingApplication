@@ -19,41 +19,42 @@ const { errorHandler, NotFoundHandler } = require("./middleware/errorHandler");
 
 const app = express();
 
+// ==========================
 // Middlewares
+// ==========================
 app.use(cors());
 app.use(express.json());
 
 // Connect DB
 connectDB();
 
-// ======================================
-//              API ROUTES
-// ======================================
+// ==========================
+// API ROUTES
+// ==========================
 app.use("/api/auth", authRoutes);
 app.use("/api/anime", animeRoutes);
 app.use("/api/news", newsRoutes);
 app.use("/api/animeList", animeListRoutes);
 app.use("/api/reviews", reviewRoutes);
 
-// ⭐ NEW CLUB ROUTES ⭐
+// ⭐ CLUB ROUTES
 app.use("/api/clubs", clubRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/polls", pollRoutes);
 
-// ======================================
-// FRONTEND ROUTES
-// ======================================
+// Frontend base route
 app.use("/", routes);
 
-// ======================================
-// 404 HANDLER
-// ======================================
+// 404 Handler
 app.use(NotFoundHandler);
 
 // Global error handler
 app.use(errorHandler);
 
-// Start server
-app.listen(process.env.PORT, () => {
-  console.log(`Server running on port ${process.env.PORT}`);
+// ==========================
+// Start Server
+// ==========================
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
