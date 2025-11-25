@@ -1,0 +1,187 @@
+/* Wrapper */
+.featured-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 20px 0;
+}
+
+/* Slider Row */
+.featured-slider {
+  display: flex;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  width: 100%;
+}
+
+/* Individual Slide */
+.featured-card {
+  min-width: 100%;
+  height: 280px;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* GIF Container */
+.video-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* GIF Image */
+.gif-slide {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(70%);
+}
+
+/* Blurred Background */
+.blur-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(15px) brightness(55%);
+  transform: scale(1.1);
+  z-index: 1;
+}
+
+/* Portrait Image */
+.featured-portrait {
+  position: absolute;
+  bottom: 20px;
+  left: 25px;
+  width: 130px;
+  height: 185px;
+  object-fit: cover;
+  border-radius: 10px;
+  z-index: 2;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Text Section */
+.featured-info {
+  position: absolute;
+  left: 175px;
+  bottom: 35px;
+  color: white;
+  z-index: 3;
+}
+
+/* GIF Slide Info */
+.video-info {
+  left: 30px;
+  bottom: 30px;
+}
+
+/* Tag Pill */
+.featured-tag {
+  background: #4caf50;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+/* Anime Title */
+.featured-info h2 {
+  font-size: 24px;
+  margin: 0;
+  font-weight: 700;
+}
+
+/* Slider Buttons */
+.featured-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px 14px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.45);
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 10;
+  transition: 0.25s;
+}
+
+.featured-btn:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.featured-btn.left {
+  left: 10px;
+}
+
+.featured-btn.right {
+  right: 10px;
+}
+
+/* ---------------------------- */
+/* RESPONSIVE DESIGN */
+/* ---------------------------- */
+
+/* Medium Screens (Tablets) */
+@media (max-width: 900px) {
+  .featured-card {
+    height: 240px;
+  }
+
+  .featured-portrait {
+    width: 110px;
+    height: 160px;
+    left: 20px;
+  }
+
+  .featured-info {
+    left: 150px;
+    bottom: 30px;
+  }
+
+  .featured-info h2 {
+    font-size: 20px;
+  }
+}
+
+/* Small Screens (Phones) */
+@media (max-width: 600px) {
+  .featured-card {
+    height: 210px;
+  }
+
+  .featured-portrait {
+    width: 80px;
+    height: 120px;
+    left: 15px;
+    bottom: 20px;
+  }
+
+  .featured-info {
+    left: 110px;
+    bottom: 25px;
+  }
+
+  .featured-info h2 {
+    font-size: 16px;
+  }
+
+  .featured-btn {
+    font-size: 15px;
+    padding: 6px 8px;
+  }
+}
+
+/* Extra Small Screens */
+@media (max-width: 420px) {
+  .featured-info h2 {
+    font-size: 14px;
+  }
+
+  .featured-tag {
+    font-size: 10px;
+  }
+}

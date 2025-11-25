@@ -1,0 +1,181 @@
+/* =========================================
+   MAIN NEWS SECTION
+========================================= */
+.news-container {
+  width: 95%;
+  margin: 40px auto;
+  padding: 0 5px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+.news-container h2 {
+  font-size: 28px;
+  margin-bottom: 18px;
+  padding-left: 14px;
+  border-left: 4px solid #ff4ecd;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* =========================================
+   SCROLL WRAPPER
+========================================= */
+.slider-wrapper {
+  position: relative;
+  padding: 10px 0;
+}
+
+/* Horizontal Scroll Row */
+.news-grid {
+  display: flex;
+  gap: 22px;
+
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  padding-bottom: 15px;
+
+  /* Hide scrollbars */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.news-grid::-webkit-scrollbar {
+  display: none;
+}
+
+/* =========================================
+   NEWS CARD
+========================================= */
+.news-card {
+  width: 260px;
+
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+
+  padding: 14px;
+  border-radius: 14px;
+  cursor: pointer;
+
+  transition: 0.3s ease;
+  transform: translateY(0);
+}
+
+.news-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.news-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Title */
+.news-card h3 {
+  font-size: 17px;
+  margin: 10px 0 6px;
+  font-weight: 600;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Date */
+.news-date {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-bottom: 5px;
+}
+
+/* Description */
+.news-text {
+  font-size: 13px;
+  line-height: 1.4;
+  height: 55px;
+
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* Link */
+.news-card a {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: yellow;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.news-card a:hover {
+  letter-spacing: 1px;
+}
+
+/* =========================================
+   SCROLL BUTTONS
+========================================= */
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background: linear-gradient(135deg, #ffe24e, #f3e848);
+  color: black;
+
+  border: none;
+  font-size: 22px;
+  padding: 12px 15px;
+
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.9;
+
+  z-index: 20;
+  transition: 0.2s;
+}
+
+.scroll-btn:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.15);
+}
+
+/* Button Positions */
+.left-btn {
+  left: -10px;
+}
+
+.right-btn {
+  right: -10px;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+@media (max-width: 720px) {
+  .news-card {
+    width: 220px;
+  }
+
+  .news-card img {
+    height: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .news-card {
+    width: 190px;
+  }
+
+  .scroll-btn {
+    font-size: 18px;
+    padding: 10px;
+  }
+}

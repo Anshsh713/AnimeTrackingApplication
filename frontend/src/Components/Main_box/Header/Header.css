@@ -1,0 +1,223 @@
+@import url("../../../index.css"); /* import root vars */
+
+/* Global styles */
+* {
+  font-family: var(--font-title); /* default font */
+  box-sizing: border-box; /* include border in size */
+}
+
+/* Header container */
+header {
+  background-color: var(--color6); /* main bg */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* shadow */
+  margin: 5px; /* outer margin */
+  height: 70px; /* header height */
+  width: calc(100% - 10px); /* full width minus margin */
+  border-radius: 10px; /* rounded corners */
+  padding: 0 1rem; /* side padding */
+}
+
+/* Nav bar */
+nav {
+  width: 100%; /* full width */
+  height: 100%; /* full height */
+  display: flex; /* flex layout */
+  justify-content: space-between; /* space between logo and links */
+  align-items: center; /* center vertically */
+}
+
+/* Logo wrapper */
+.main-box {
+  display: flex; /* flex row */
+  align-items: center; /* center logo */
+}
+
+/* Logo box */
+.Logo {
+  width: 10rem; /* logo width */
+  display: flex; /* flex */
+  align-items: center; /* center vertically */
+}
+
+/* Logo image */
+.Logo img {
+  width: 100%; /* fill box */
+  height: auto; /* keep ratio */
+  object-fit: contain; /* no crop */
+}
+
+/* Nav links (desktop default) */
+.nav-links {
+  display: flex; /* row layout */
+  align-items: center; /* center vertically */
+  list-style: none; /* remove bullets */
+  gap: 40px; /* space between items */
+  margin: 0; /* no margin */
+  padding: 0; /* no padding */
+}
+
+/* Nav icon */
+.nav-icon i {
+  font-size: 1.5rem; /* icon size */
+  color: var(--color5); /* default icon color */
+}
+
+/* Solid icon active color */
+.nav-icon i.fa-solid {
+  color: var(--color1); /* active color */
+}
+
+/* Icon hover */
+.nav-icon i:hover {
+  color: var(--color2); /* hover color */
+}
+
+/* User section wrapper */
+.user-section {
+  display: flex; /* row */
+  align-items: center; /* center vertically */
+  gap: 5px; /* space between name and icons */
+  margin-left: 1rem; /* space from nav icons */
+}
+
+/* Username text */
+.user-name {
+  font-size: 1.1rem; /* text size */
+  color: var(--textcolor); /* text color */
+  font-weight: 500; /* slightly bold */
+}
+
+/* User section icon size */
+.user-section i {
+  font-size: 1.9rem; /* avatar icon size */
+}
+/* Dropdown menu container */
+.dropdown-menu {
+  position: absolute; /* float over content */
+  top: 3.5rem; /* below header */
+  right: 2rem; /* near right edge */
+  background: var(--color4); /* dropdown bg */
+  border-radius: 10px; /* rounded corners */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* shadow */
+  overflow: hidden; /* hide overflow */
+  animation: fadeIn 0.2s ease-in-out; /* fade animation */
+  display: flex; /* column layout */
+  flex-direction: column; /* vertical */
+  min-width: 150px; /* minimum width */
+  z-index: 9999; /* above all */
+}
+
+/* Dropdown buttons */
+.dropdown-menu button {
+  background: transparent; /* no bg */
+  border: none; /* no border */
+  color: var(--color6); /* text color */
+  text-align: left; /* align left */
+  padding: 0.8rem 1.2rem; /* inner spacing */
+  font-size: 0.95rem; /* font size */
+  cursor: pointer; /* pointer cursor */
+}
+
+/* Dropdown hover */
+.dropdown-menu button:hover {
+  background: var(--color3); /* hover bg */
+  color: var(--color7); /* hover text color */
+}
+
+/* Logout button style */
+.dropdown-menu .logout {
+  color: var(--color1); /* highlight color */
+  font-weight: 600; /* bold */
+}
+
+/* Avatar image */
+.header-avatar {
+  width: 34px; /* avatar size */
+  height: 34px; /* avatar size */
+  border-radius: 50%; /* circular */
+  object-fit: cover; /* cover box */
+  border: 2px solid var(--color1); /* border color */
+}
+
+/* Avatar NavLink */
+.profile-avatar-link {
+  display: flex; /* center */
+  align-items: center; /* vertical center */
+  justify-content: center; /* horizontal center */
+}
+
+/* Mobile menu button (hamburger) */
+.mobile-menu-btn {
+  display: none; /* hidden on desktop */
+  border: none; /* no border */
+  background: transparent; /* clear bg */
+  font-size: 1.8rem; /* icon size */
+  cursor: pointer; /* pointer cursor */
+}
+
+/* Mobile menu icon color */
+.mobile-menu-btn i {
+  color: var(--color1); /* icon color */
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* start invisible */
+    transform: translateY(-8px); /* move up */
+  }
+  to {
+    opacity: 1; /* visible */
+    transform: translateY(0); /* normal position */
+  }
+}
+
+/* ---- Responsiveness ---- */
+
+/* Medium screens: slight adjustments */
+@media (max-width: 900px) {
+  .nav-links {
+    gap: 25px; /* reduce gap */
+  }
+
+  .user-name {
+    display: none; /* hide name if tight */
+  }
+}
+
+/* Small screens: mobile layout */
+@media (max-width: 700px) {
+  /* Show mobile button */
+  .mobile-menu-btn {
+    display: block; /* show hamburger */
+  }
+
+  /* Hide desktop nav by default */
+  .nav-links {
+    display: none; /* hide menu */
+  }
+
+  /* When mobile nav open, show as dropdown panel */
+  .nav-links.nav-links-open {
+    display: flex; /* show menu */
+    flex-direction: column; /* vertical list */
+    position: absolute; /* overlay */
+    top: 70px; /* below header */
+    left: 0; /* full width */
+    right: 0; /* full width */
+    background-color: var(--color6); /* same bg as header */
+    padding: 1rem 1.5rem 1.5rem; /* padding around */
+    gap: 1rem; /* vertical gap */
+    z-index: 999; /* above content */
+  }
+
+  /* User section stacked nicely */
+  .user-section {
+    margin-left: 0; /* reset margin */
+    justify-content: flex-start; /* left aligned */
+  }
+
+  header {
+    height: 70px; /* keep header height */
+  }
+}

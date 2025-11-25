@@ -1,0 +1,57 @@
+/* Main profile wrapper */
+.profile-page {
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+  color: white;
+}
+
+/* Loading screen center alignment */
+.loading-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+}
+
+/* Main content layout */
+.profile-body {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* =============================== */
+/* RESPONSIVE DESIGN               */
+/* =============================== */
+
+/* Tablets & Medium Screens */
+@media (max-width: 900px) {
+  .profile-page {
+    padding: 0 15px;
+  }
+
+  .profile-body {
+    gap: 20px;
+  }
+}
+
+/* Mobile Screens */
+@media (max-width: 600px) {
+  .profile-page {
+    padding: 0 10px;
+  }
+
+  .profile-body {
+    gap: 18px;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 400px) {
+  .profile-body {
+    gap: 15px;
+  }
+}

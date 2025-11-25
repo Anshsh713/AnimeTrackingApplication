@@ -1,0 +1,148 @@
+/* MAIN CONTAINER */
+.top3-container {
+  background: var(--background);
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px; /* Desktop size */
+  margin: 0 auto;
+}
+
+/* TITLES */
+.top3-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 18px 0 12px;
+  color: var(--textcolor);
+  border-left: 4px solid var(--color7);
+  padding-left: 10px;
+}
+
+/* ANIME CARD */
+.top3-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #dbdbdb;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  margin-bottom: 14px;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+.top3-card:hover {
+  transform: translateX(4px);
+  background: #eeeeee;
+}
+
+/* COVER IMAGE */
+.top3-card img {
+  width: 60px;
+  height: 85px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* TITLE TEXT */
+.top3-card p {
+  margin: 0;
+  font-size: 15px;
+  color: black;
+  font-weight: 600;
+}
+
+/* ================================================= */
+/*                RESPONSIVE BREAKPOINTS             */
+/* ================================================= */
+
+/* Laptops & Tablets */
+@media (max-width: 1024px) {
+  .top3-container {
+    max-width: 500px;
+  }
+
+  .top3-title {
+    font-size: 19px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .top3-container {
+    max-width: 420px;
+  }
+
+  .top3-card img {
+    width: 55px;
+    height: 78px;
+  }
+
+  .top3-title {
+    font-size: 18px;
+  }
+}
+
+/* Large Mobile */
+@media (max-width: 600px) {
+  .top3-container {
+    width: 92%;
+    padding: 15px;
+  }
+
+  .top3-card {
+    padding: 10px;
+  }
+
+  .top3-card img {
+    width: 50px;
+    height: 72px;
+  }
+
+  .top3-card p {
+    font-size: 14px;
+  }
+
+  .top3-title {
+    font-size: 17px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 450px) {
+  .top3-container {
+    width: 95%;
+    padding: 14px;
+  }
+
+  .top3-card img {
+    width: 46px;
+    height: 66px;
+  }
+
+  .top3-title {
+    font-size: 16px;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 350px) {
+  .top3-card {
+    gap: 8px;
+  }
+
+  .top3-card img {
+    width: 42px;
+    height: 60px;
+  }
+
+  .top3-card p {
+    font-size: 13px;
+  }
+
+  .top3-title {
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,73 @@
+.anime-card {
+  position: relative;
+  min-width: 165px; /* <-- IMPORTANT */
+  height: 230px;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 10px;
+  flex-shrink: 0;
+
+  transition: transform 0.25s ease;
+}
+
+.anime-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Cover Image */
+.anime-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.25s ease;
+}
+
+.anime-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Title Overlay */
+.anime-title {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+  pointer-events: none;
+}
+
+/* ================================
+   RESPONSIVE DESIGN
+================================ */
+
+/* Tablets */
+@media (max-width: 900px) {
+  .anime-card {
+    width: 22%;
+  }
+
+  .anime-title {
+    font-size: 11px;
+  }
+}
+
+/* Large Phones */
+@media (max-width: 600px) {
+  .anime-card {
+    width: 30%;
+  }
+}
+
+/* Small Phones */
+@media (max-width: 450px) {
+  .anime-card {
+    width: 47%;
+  }
+
+  .anime-title {
+    font-size: 10px;
+  }
+}

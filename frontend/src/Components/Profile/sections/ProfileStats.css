@@ -1,0 +1,90 @@
+/* Container for statistics */
+.stats-overview {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  color: #111;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Title */
+.stats-overview h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  border-left: 4px solid #4caf50;
+  padding-left: 10px;
+  font-weight: 700;
+}
+
+/* Main statistics grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+/* Each statistic box */
+.stats-grid div {
+  background: #f5f5f5;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Subsection title */
+.status-title {
+  font-size: 18px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+/* Status breakdown grid */
+.status-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+/* Status items */
+.status-grid p {
+  padding: 8px;
+  background: #f4f4f4;
+  border-radius: 6px;
+  margin: 0;
+  font-size: 14px;
+}
+
+/* -------------------------------------
+   RESPONSIVE DESIGN
+-------------------------------------- */
+
+@media (max-width: 768px) {
+  /* More compact layout */
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .status-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-overview {
+    padding: 15px;
+  }
+
+  .stats-grid div,
+  .status-grid p {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .stats-overview h2 {
+    font-size: 20px;
+  }
+}

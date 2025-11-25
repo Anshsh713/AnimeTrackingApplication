@@ -1,0 +1,187 @@
+/* ==========================================
+   PAGE WRAPPER
+========================================== */
+.about-page {
+  padding: 2.5rem;
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+  font-family: var(--font-title);
+}
+
+/* ==========================================
+   HERO SECTION
+========================================== */
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--textcolor);
+}
+
+.hero h1 span {
+  color: var(--color1);
+}
+
+.hero p {
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+  color: var(--textcolor2);
+}
+
+.login-btn {
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.5rem;
+
+  background: var(--color1);
+  color: white;
+
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.login-btn:hover {
+  background: var(--color2);
+}
+
+.login-popup {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* ==========================================
+   FEATURES SECTION
+========================================== */
+.features h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: var(--textcolor);
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+}
+
+.feature-card {
+  padding: 1.5rem;
+  border-radius: 12px;
+
+  background: var(--color6);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+  transition: 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+}
+
+.feature-card i {
+  font-size: 2rem;
+  color: var(--color1);
+}
+
+.feature-card h3 {
+  margin-top: 0.8rem;
+  font-size: 1.3rem;
+  color: var(--textcolor);
+}
+
+.feature-card p {
+  margin-top: 0.3rem;
+  color: var(--textcolor2);
+}
+
+/* ==========================================
+   VISION SECTION
+========================================== */
+.vision {
+  margin: 3rem 0;
+}
+
+.vision h2 {
+  font-size: 2rem;
+  color: var(--textcolor);
+  margin-bottom: 1rem;
+}
+
+.vision p {
+  max-width: 700px;
+  margin: auto;
+
+  font-size: 1.2rem;
+  color: var(--textcolor2);
+}
+
+/* ==========================================
+   CTA SECTION
+========================================== */
+.cta h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--textcolor);
+}
+
+.cta-btn {
+  padding: 0.9rem 1.6rem;
+
+  background: var(--color1);
+  color: white;
+
+  font-size: 1.2rem;
+  border-radius: 12px;
+  border: none;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cta-btn:hover {
+  background: var(--color2);
+}
+
+/* ==========================================
+   ANIMATION
+========================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+========================================== */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.3rem;
+  }
+
+  .vision p {
+    font-size: 1.05rem;
+  }
+
+  .cta h2 {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .feature-card {
+    padding: 1.2rem;
+  }
+}

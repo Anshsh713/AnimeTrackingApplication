@@ -1,0 +1,164 @@
+/* ============================
+   Polls Page Layout
+============================ */
+.club-polls {
+  max-width: 800px; /* Limit width */
+  margin: auto; /* Center content */
+  padding: 30px; /* Space around */
+  color: white; /* Text color */
+  animation: fadeIn 0.4s ease; /* Smooth entry */
+}
+
+.club-polls h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+/* ============================
+   Create Poll Section
+============================ */
+.create-poll {
+  background: rgba(25, 25, 35, 0.85); /* Card background */
+  padding: 20px;
+  border-radius: 12px; /* Rounded corners */
+  border: 1px solid rgba(140, 140, 255, 0.2);
+  margin-bottom: 30px;
+  animation: fadeIn 0.4s ease;
+}
+
+/* Poll form inputs */
+.create-poll input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  background: rgba(20, 20, 30, 0.9);
+  border: 1px solid rgba(130, 130, 255, 0.3);
+  border-radius: 10px;
+  color: white;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.create-poll input:focus {
+  border-color: rgba(160, 160, 255, 0.7);
+  box-shadow: 0 0 12px rgba(130, 130, 255, 0.4);
+}
+
+/* Create poll button */
+.create-poll button {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  background: linear-gradient(135deg, #6a5cff, #8a7bff);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.create-poll button:hover {
+  background: linear-gradient(135deg, #8b7bff, #a99aff);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(140, 130, 255, 0.45);
+}
+
+/* ============================
+   Poll Cards
+============================ */
+.poll-card {
+  background: rgba(25, 25, 35, 0.85);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(150, 150, 255, 0.25);
+  margin-bottom: 20px;
+  transition: 0.3s ease;
+  animation: fadeIn 0.4s ease;
+}
+
+.poll-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(170, 170, 255, 0.5);
+  box-shadow: 0 6px 14px rgba(120, 120, 255, 0.3);
+}
+
+.poll-card h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #dcdcff;
+}
+
+/* ============================
+   Option Buttons
+============================ */
+.poll-card button {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+  background: rgba(50, 50, 70, 0.9);
+  border: 1px solid rgba(120, 120, 255, 0.4);
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.poll-card button:hover {
+  background: rgba(90, 90, 140, 0.9);
+  transform: translateY(-2px);
+  border-color: rgba(150, 150, 255, 0.7);
+}
+
+/* ============================
+   Fade Animation
+============================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================
+   Responsive Adjustments
+============================ */
+
+@media (max-width: 600px) {
+  .club-polls {
+    padding: 20px; /* Smaller padding */
+  }
+
+  .poll-card h3 {
+    font-size: 20px;
+  }
+
+  .poll-card button {
+    font-size: 15px; /* Slightly smaller */
+  }
+
+  .create-poll input {
+    padding: 10px;
+  }
+}
+
+/* Very small devices */
+@media (max-width: 420px) {
+  .poll-card {
+    padding: 15px;
+  }
+
+  .create-poll {
+    padding: 15px;
+  }
+
+  .club-polls h2 {
+    font-size: 28px;
+  }
+}

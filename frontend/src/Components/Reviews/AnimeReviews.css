@@ -1,0 +1,149 @@
+/* Main container */
+.review-container {
+  padding: 20px;
+  max-width: 700px;
+  margin: auto;
+  color: #ffffff;
+}
+
+/* Create review box */
+.review-create {
+  background: #1f1f1f;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Review text input */
+.review-create textarea {
+  width: 100%;
+  height: 80px;
+  background: #121212;
+  color: white;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+/* Rating input */
+.review-create input {
+  width: 100px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #444;
+}
+
+/* Post button */
+.review-create button {
+  width: 140px;
+  padding: 8px;
+  background: #ff9800;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  color: black;
+}
+
+/* Review cards list */
+.review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Card UI */
+.review-card {
+  background: #2c2c2c;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+/* Review header */
+.review-card h4 {
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+/* Comments wrapper */
+.comment-box {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #555;
+}
+
+/* Comment text */
+.comment-item {
+  margin-bottom: 5px;
+}
+
+/* Comment input wrapper */
+.comment-input {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+/* Comment text field */
+.comment-input input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background: #121212;
+  color: white;
+}
+
+/* Submit comment button */
+.comment-input button {
+  padding: 8px 14px;
+  background: #4caf50;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: black;
+  font-weight: bold;
+}
+
+/* Like/Dislike buttons */
+.review-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 15px;
+}
+
+.review-actions button {
+  background: #333;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #555;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.review-actions button:hover {
+  background: #555;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .review-card h4 {
+    font-size: 16px;
+  }
+
+  .review-create button {
+    width: 100%;
+  }
+
+  .comment-input {
+    flex-direction: column;
+  }
+
+  .comment-input button {
+    width: 100%;
+  }
+}

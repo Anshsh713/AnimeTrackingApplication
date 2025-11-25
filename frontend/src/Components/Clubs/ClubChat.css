@@ -1,0 +1,191 @@
+/* ========= PAGE CONTAINER ========= */
+.club-chat {
+  padding: 20px;
+  max-width: 900px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: white;
+}
+
+/* Title */
+.club-chat h2 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* ========= MESSAGE AREA ========= */
+.messages {
+  background: #0f0f14;
+  padding: 18px;
+  height: 450px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(100, 100, 255, 0.2);
+}
+
+/* Scrollbar */
+.messages::-webkit-scrollbar {
+  width: 6px;
+}
+.messages::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 6px;
+}
+
+/* ========= MESSAGE BUBBLES ========= */
+.message {
+  background: #1c1c22;
+  padding: 12px 16px;
+  border-radius: 12px;
+  width: fit-content;
+  max-width: 70%;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.message.mine {
+  margin-left: auto;
+  background: #4a8fff;
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+
+.message:not(.mine) {
+  border-bottom-left-radius: 4px;
+}
+
+/* Username */
+.message b {
+  color: #c5c5ff;
+}
+
+/* ========= SPOILER ========= */
+.spoiler {
+  cursor: pointer;
+  transition: 0.2s;
+}
+.spoiler.blur {
+  filter: blur(6px);
+  opacity: 0.5;
+}
+.spoiler.revealed {
+  filter: none;
+  opacity: 1;
+}
+
+/* ========= RATING TAG ========= */
+.rating-tag {
+  margin-left: 10px;
+  padding: 3px 8px;
+  font-size: 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ========= POLL POPUP ========= */
+.poll-popup {
+  background: #1b1b24;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(120, 120, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.poll-popup input {
+  padding: 10px;
+  background: #111119;
+  border: 1px solid #444;
+  border-radius: 8px;
+  color: white;
+}
+
+/* ========= INPUT SECTION ========= */
+.chat-input textarea {
+  width: 100%;
+  height: 70px;
+  background: #15151c;
+  padding: 12px;
+  border: 1px solid #444;
+  color: white;
+  border-radius: 10px;
+  resize: none;
+}
+
+/* Input row */
+.input-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.spoiler-check {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+/* Rating input */
+.input-row input[type="number"] {
+  width: 90px;
+  background: #111119;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 8px;
+  color: white;
+}
+
+/* Buttons */
+.send-btn,
+.poll-btn {
+  padding: 9px 18px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  border: none;
+  transition: 0.2s;
+}
+
+.send-btn {
+  background: #4a90e2;
+}
+.send-btn:hover {
+  background: #69a8ff;
+}
+
+.poll-btn {
+  background: #8a5cff;
+}
+.poll-btn:hover {
+  background: #a07bff;
+}
+
+/* ========= RESPONSIVE ========= */
+@media (max-width: 600px) {
+  .club-chat {
+    padding: 15px;
+  }
+
+  .club-chat h2 {
+    font-size: 22px;
+  }
+
+  .message {
+    max-width: 85%;
+  }
+
+  .messages {
+    height: 380px;
+  }
+}

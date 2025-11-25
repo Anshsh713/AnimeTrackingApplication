@@ -1,0 +1,174 @@
+/* ============================
+   Clubs Page Wrapper
+============================ */
+.clubs-page {
+  padding: 30px; /* Outer spacing */
+  color: white; /* Text color */
+  width: 100%; /* Full width */
+  max-width: 1400px; /* Limit on huge screens */
+  margin: 0 auto; /* Center page */
+  animation: fadeIn 0.4s ease; /* Smooth entry */
+
+  display: flex; /* Vertical layout */
+  flex-direction: column;
+  gap: 20px; /* Space between blocks */
+}
+
+/* ============================
+   Header Row
+============================ */
+.clubs-header {
+  display: flex; /* Row layout */
+  justify-content: space-between; /* Title left + button right */
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.clubs-header h1 {
+  font-size: 36px; /* Big title */
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* ============================
+   Create Club Button
+============================ */
+.create-btn {
+  background: linear-gradient(135deg, #6a5cff, #8a7bff); /* Purple gradient */
+  border: none;
+  padding: 10px 18px; /* Button size */
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer; /* Make clickable */
+  transition: 0.3s ease; /* Hover animation */
+}
+
+.create-btn:hover {
+  background: linear-gradient(135deg, #8b7bff, #a99aff); /* Lighter hover */
+  transform: translateY(-2px); /* Lift effect */
+  box-shadow: 0 4px 10px rgba(150, 130, 255, 0.4);
+}
+
+/* ============================
+   Clubs Grid Layout
+============================ */
+.clubs-grid {
+  display: grid; /* Responsive grid */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px; /* Grid spacing */
+  width: 100%;
+}
+
+/* ============================
+   Club Card Style
+============================ */
+.club-card {
+  background: rgba(25, 25, 35, 0.85); /* Dark card */
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(120, 120, 255, 0.2);
+
+  transition: 0.3s ease; /* Hover animation */
+  cursor: pointer;
+  min-height: 150px; /* Even size */
+
+  display: flex; /* Vertical card content */
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.club-card h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #d5d7ff; /* Light purple */
+}
+
+.club-card p {
+  font-size: 15px;
+  opacity: 0.9;
+}
+
+/* Hover effect */
+.club-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(140, 140, 255, 0.7);
+  box-shadow: 0 8px 20px rgba(120, 120, 255, 0.3);
+  background: rgba(30, 30, 45, 0.92);
+}
+
+/* ============================
+   Section Titles
+============================ */
+.section-title {
+  font-size: 26px;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+/* Empty State */
+.empty-text {
+  opacity: 0.7;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* ============================
+   Fade Animation
+============================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================
+   Responsive Design
+============================ */
+
+/* Tablets & Phones */
+@media (max-width: 900px) {
+  .clubs-header h1 {
+    font-size: 30px;
+  }
+
+  .clubs-grid {
+    gap: 20px;
+  }
+}
+
+/* Small Phones */
+@media (max-width: 600px) {
+  .clubs-header h1 {
+    font-size: 24px;
+  }
+
+  .create-btn {
+    font-size: 14px;
+    padding: 8px 14px;
+  }
+
+  .club-card {
+    padding: 15px; /* Smaller padding */
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 420px) {
+  .clubs-grid {
+    grid-template-columns: 1fr; /* Single column */
+  }
+
+  .clubs-header {
+    flex-direction: column; /* Stack header */
+    gap: 15px;
+  }
+}

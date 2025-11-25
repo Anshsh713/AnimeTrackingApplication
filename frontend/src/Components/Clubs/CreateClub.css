@@ -1,0 +1,121 @@
+/* ============================
+   Main Wrapper
+============================ */
+.create-club {
+  max-width: 600px; /* Centered narrow width */
+  margin: 0 auto; /* Center horizontally */
+  padding: 30px; /* Inner spacing */
+  color: white; /* Text color */
+  animation: fadeIn 0.4s ease; /* Page entry animation */
+}
+
+/* Page Title */
+.create-club h1 {
+  font-size: 34px; /* Large title */
+  font-weight: 700; /* Bold */
+  margin-bottom: 25px; /* Space below */
+  text-align: center; /* Center text */
+  color: #dcdcff; /* Light purple */
+}
+
+/* ============================
+   Inputs
+============================ */
+.create-club input,
+.create-club textarea {
+  width: 100%; /* Full width inputs */
+  padding: 12px 15px; /* Comfortable size */
+  margin: 10px 0; /* Space between fields */
+  background: rgba(25, 25, 35, 0.8); /* Dark glass bg */
+  border: 1px solid rgba(130, 130, 255, 0.3); /* Soft border */
+  border-radius: 10px; /* Rounded corners */
+  color: white; /* White text */
+  font-size: 16px; /* Medium font */
+  outline: none; /* Remove outline */
+  transition: 0.3s ease; /* Smooth focus effect */
+}
+
+/* Focus glow */
+.create-club input:focus,
+.create-club textarea:focus {
+  border-color: rgba(160, 160, 255, 0.7); /* Brighter border */
+  box-shadow: 0 0 10px rgba(120, 120, 255, 0.4); /* Glow */
+}
+
+/* Textarea adjustments */
+.create-club textarea {
+  min-height: 120px; /* Reasonable height */
+  resize: none; /* Prevent resizing */
+}
+
+/* ============================
+   Create Button
+============================ */
+.create-club button {
+  width: 100%; /* Full width */
+  padding: 12px; /* Good height */
+  margin-top: 15px; /* Space above */
+  background: linear-gradient(135deg, #6a5cff, #8a7bff); /* Purple gradient */
+  border: none; /* No border */
+  border-radius: 10px; /* Rounded */
+  color: white; /* White text */
+  font-size: 18px; /* Large text */
+  font-weight: 700; /* Bold */
+  cursor: pointer; /* Clickable */
+  transition: 0.3s ease; /* Hover effect */
+}
+
+/* Button hover */
+.create-club button:hover {
+  background: linear-gradient(135deg, #8d7bff, #a79aff); /* Lighter gradient */
+  transform: translateY(-2px); /* Lift up */
+  box-shadow: 0 4px 12px rgba(140, 130, 255, 0.45); /* Glow shadow */
+}
+
+/* ============================
+   Checkbox Row
+============================ */
+.checkbox-row {
+  display: flex; /* Align items */
+  align-items: center; /* Center vertically */
+  gap: 8px; /* Spacing */
+  margin-top: 8px; /* Space above */
+  font-size: 14px; /* Small text */
+  opacity: 0.85; /* Slight fade */
+}
+
+/* ============================
+   Fade Animation
+============================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Hidden */
+    transform: translateY(12px); /* Slide up */
+  }
+  to {
+    opacity: 1; /* Visible */
+    transform: translateY(0); /* Original */
+  }
+}
+
+/* ============================
+   Responsive Design
+============================ */
+@media (max-width: 600px) {
+  .create-club {
+    padding: 20px; /* Smaller padding */
+  }
+
+  .create-club h1 {
+    font-size: 28px; /* Smaller title */
+  }
+
+  .create-club input,
+  .create-club textarea {
+    font-size: 15px; /* Slightly smaller text */
+  }
+
+  .create-club button {
+    font-size: 16px; /* Smaller button text */
+  }
+}

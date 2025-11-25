@@ -1,0 +1,171 @@
+/* MAIN CONTAINER */
+.stats-container {
+  width: 100%;
+  background: var(--background);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  font-family: "Poppins", sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* PAGE TITLE */
+.stats-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--textcolor);
+  text-align: center;
+}
+
+/* CARD STYLE */
+.stats-card {
+  background: #dbdbdb;
+  padding: 18px;
+  border-radius: 12px;
+  margin-bottom: 18px;
+  border: 1px solid #e0e0e0;
+  transition: 0.25s;
+}
+
+.stats-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* CARD TITLE */
+.stats-card h2 {
+  font-size: 18px;
+  font-weight: 600;
+  border-left: 4px solid #4caf50;
+  padding-left: 10px;
+  margin-bottom: 12px;
+  color: #37474f;
+}
+
+/* TEXT LINE */
+.stats-line {
+  margin: 7px 0;
+  font-size: 15px;
+  color: #444;
+}
+
+/* GRID FOR STATUS */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.stats-grid p {
+  background: #e8f5e9;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  text-align: center;
+  border-left: 3px solid #4caf50;
+}
+
+/* TOP RATED SECTION */
+.top-rated-item {
+  display: flex;
+  gap: 14px;
+  background: #f5f5f5;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+  transition: 0.2s;
+}
+
+.top-rated-item:hover {
+  background: #eeeeee;
+}
+
+.top-rated-item img {
+  width: 60px;
+  height: 85px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.top-rated-item div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.top-rated-item p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+/* ========================================= */
+/*              RESPONSIVE STYLES            */
+/* ========================================= */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .stats-container {
+    padding: 15px;
+  }
+
+  .stats-title {
+    font-size: 20px;
+  }
+
+  .stats-card {
+    padding: 15px;
+  }
+
+  .top-rated-item img {
+    width: 55px;
+    height: 80px;
+  }
+}
+
+/* Large Mobile */
+@media (max-width: 480px) {
+  .stats-title {
+    font-size: 18px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr; /* single column */
+  }
+
+  .top-rated-item {
+    gap: 10px;
+  }
+
+  .top-rated-item img {
+    width: 50px;
+    height: 72px;
+  }
+
+  .stats-line {
+    font-size: 14px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 360px) {
+  .stats-container {
+    padding: 12px;
+  }
+
+  .stats-card {
+    padding: 12px;
+  }
+
+  .stats-card h2 {
+    font-size: 16px;
+  }
+
+  .top-rated-item img {
+    width: 45px;
+    height: 65px;
+  }
+}

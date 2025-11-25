@@ -1,0 +1,132 @@
+/* =========================================
+   MAIN HOME WRAPPER (Desktop layout)
+========================================= */
+.home-wrapper {
+  display: flex;
+  gap: 22px;
+
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+
+  padding: 20px;
+  box-sizing: border-box;
+
+  align-items: flex-start;
+  overflow-x: hidden;
+}
+
+/* =========================================
+   LEFT COLUMN – Main content
+========================================= */
+.home-left {
+  flex: 2.2;
+  min-width: 0;
+}
+
+/* =========================================
+   RIGHT COLUMN – Sticky sidebar
+========================================= */
+.home-right {
+  flex: 1;
+  min-width: 330px;
+  max-width: 350px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  position: sticky;
+  top: 20px;
+}
+
+/* =======================================================
+   🔥 RESPONSIVE BREAKPOINTS
+   Optimized for Tablet → iPad → Mobile → Small Phone
+======================================================== */
+
+/* =========================================
+   TABLETS (1024px and below)
+========================================= */
+@media (max-width: 1024px) {
+  .home-wrapper {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .home-right {
+    position: relative; /* disable sticky */
+    max-width: 100%;
+    min-width: 100%;
+  }
+}
+
+/* =========================================
+   LARGE PHONES (600–900px)
+========================================= */
+@media (max-width: 900px) {
+  .home-wrapper {
+    padding: 12px;
+    gap: 16px;
+  }
+
+  .home-right {
+    gap: 16px;
+  }
+}
+
+/* =========================================
+   MOBILE (≤ 600px)
+========================================= */
+@media (max-width: 600px) {
+  .home-wrapper {
+    padding: 10px;
+    gap: 14px;
+  }
+
+  .home-left {
+    width: 100%;
+  }
+
+  .home-right {
+    width: 100%;
+    gap: 15px;
+  }
+
+  /* Make sliders more compact on mobile */
+  .home-left section h2 {
+    font-size: 18px;
+  }
+}
+
+/* =========================================
+   SMALL PHONES / NOTCH DEVICES (≤ 450px)
+========================================= */
+@media (max-width: 450px) {
+  .home-wrapper {
+    padding: 8px;
+  }
+
+  .home-right {
+    gap: 12px;
+  }
+
+  /* Reduce heading sizes globally */
+  .home-left h2,
+  .home-right h2 {
+    font-size: 17px !important;
+  }
+}
+
+/* =========================================
+   ULTRA SMALL DEVICES (≤ 360px)
+========================================= */
+@media (max-width: 360px) {
+  .home-wrapper {
+    padding: 5px;
+  }
+
+  .home-right {
+    gap: 10px;
+  }
+}

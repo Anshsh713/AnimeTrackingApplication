@@ -1,0 +1,69 @@
+@import "tailwindcss";
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+/* Hide scrollbar but allow scrolling */
+html,
+body {
+  background-color: var(--background);
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  overflow: -moz-scrollbars-none; /* older Firefox */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+/* Colors for Light Mode */
+:root {
+  --background: #e1e6ef;
+  --color1: #ffd500;
+  --color2: #fdc500;
+  --color3: #00509d;
+  --color4: #003f88;
+  --color5: #00296b;
+  --color6: #ff9100;
+  --color7: #ff6d00;
+  --textcolor: black;
+}
+
+/* Colors for Dark Mode */
+
+/* Color for Dark Mode */
+/* Dark Mode */
+:root[data-theme="dark"] {
+  --background: #0c2e53;
+  --color1: #ffdd57; /* Softer yellow accent */
+  --color2: #e6b800; /* Golden shade for highlights */
+  --color3: #4ea3ff; /* Lighter version of blue for contrast */
+  --color4: #1b4b82; /* Mid blue for elements */
+  --color5: #0a2540; /* Deep navy background */
+  --color6: #ffb74d; /* Warm amber accent */
+  --color7: #ff9100; /* Orange highlight for active states */
+  --textcolor: #f1f1f1; /* Light text for readability */
+}
+
+:root {
+  --font-title: "Anime Ace", sans-serif;
+  --font-body: "Inter", sans-serif; /* or whichever clean font you pick */
+}
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+  min-height: 0;
+}

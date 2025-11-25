@@ -1,0 +1,91 @@
+/* Wrapper styling to match profile card theme */
+.favorite-section {
+  background: white;
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+}
+
+/* Section heading */
+.favorite-section h2 {
+  font-size: 20px;
+  font-weight: 600;
+  border-left: 4px solid #ff4d6d;
+  padding-left: 10px;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+/* Anime grid layout */
+.fav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
+  gap: 12px;
+}
+
+/* Anime card wrapper */
+.fav-item {
+  text-align: center;
+}
+
+/* Anime image */
+.fav-item img {
+  width: 100%;
+  height: 135px;
+  border-radius: 8px;
+  object-fit: cover;
+
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+}
+
+.fav-item img:hover {
+  transform: scale(1.05);
+}
+
+/* Anime title */
+.fav-item p {
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* -----------------------------------------
+   RESPONSIVE DESIGN
+------------------------------------------ */
+
+@media (max-width: 768px) {
+  .fav-grid {
+    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+  }
+
+  .fav-item img {
+    height: 125px;
+  }
+}
+
+@media (max-width: 500px) {
+  .fav-grid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  }
+
+  .fav-item img {
+    height: 115px;
+  }
+
+  .favorite-section h2 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 380px) {
+  .fav-grid {
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  }
+
+  .fav-item img {
+    height: 105px;
+  }
+}

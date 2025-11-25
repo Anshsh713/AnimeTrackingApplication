@@ -1,0 +1,200 @@
+/* MAIN WRAPPER */
+.Main-box {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+/* LOGIN CARD */
+.Login-main {
+  width: 40%; /* Desktop size */
+  padding: 2rem;
+  background-color: var(--color2);
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s;
+}
+
+/* HOVER EFFECT */
+.Login-main:hover {
+  box-shadow: 20px 20px 0 rgba(0, 0, 0, 1);
+}
+
+.Login-main:hover .Login-text h2 {
+  text-shadow: 0.6px 0.6px 0 rgba(0, 0, 0, 1);
+}
+
+/* HEADER TEXT */
+.Login-text {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.Login-text h2 {
+  font-size: 1.7rem;
+  color: var(--textcolor);
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.Login-text p {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color5);
+}
+
+.Login-text p a {
+  color: var(--color3);
+}
+
+.Login-text p a:hover {
+  color: var(--textcolor);
+}
+
+/* FORM STYLING */
+form {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+/* INPUT GROUP */
+.input-login {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+}
+
+.input-login label {
+  font-size: 1.1rem;
+  width: 30%;
+  color: var(--textcolor);
+}
+
+.input-login input {
+  width: 70%;
+  padding-left: 5px;
+  color: var(--textcolor);
+  background: transparent;
+  border-bottom: 1px solid var(--color3);
+}
+
+/* INPUT FOCUS */
+input:focus {
+  border-bottom: 1.5px solid var(--color3);
+  outline: none;
+}
+
+/* BUTTON */
+.Login-main button {
+  background-color: var(--color6);
+  font-size: 1.1rem;
+  font-weight: 500;
+  border: 1px solid var(--textcolor);
+  width: 50%;
+  height: 3rem;
+  margin: 1rem auto 0;
+  transition: 0.3s;
+}
+
+.Login-main button:hover {
+  border-radius: 50px;
+}
+
+/* ==========================================
+   🔥 RESPONSIVE DESIGN (ALL DEVICES)
+   ========================================== */
+
+/* Tablets & Small Laptops */
+@media (max-width: 1024px) {
+  .Login-main {
+    width: 55%;
+    padding: 2rem;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .Login-main {
+    width: 70%;
+    padding: 1.8rem;
+  }
+
+  .input-login label {
+    font-size: 1rem;
+  }
+
+  .Login-main button {
+    width: 60%;
+  }
+}
+
+/* Large Mobiles */
+@media (max-width: 600px) {
+  .Login-main {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  /* Stack label + input vertically */
+  .input-login {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .input-login label {
+    width: 100%;
+  }
+
+  .input-login input {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .Login-main button {
+    width: 80%;
+  }
+}
+
+/* Small Mobiles */
+@media (max-width: 450px) {
+  .Login-main {
+    width: 95%;
+    padding: 1.2rem;
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 1);
+  }
+
+  .Login-text h2 {
+    font-size: 1.4rem;
+  }
+
+  .Login-main button {
+    width: 90%;
+  }
+}
+
+/* Extra Small (under 360px) */
+@media (max-width: 360px) {
+  .Login-main {
+    padding: 1rem;
+  }
+
+  .Login-text h2 {
+    font-size: 1.2rem;
+  }
+
+  .Login-main button {
+    height: 2.7rem;
+  }
+}
