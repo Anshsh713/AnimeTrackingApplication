@@ -12,7 +12,7 @@ const authSlice = createSlice({
   reducers: {
     login: (state, action) => {
       state.status = true;
-      state.userData = action.payload.userData; // ✔ correct
+      state.userData = action.payload.userData;
       state.token = action.payload.token;
       localStorage.setItem("token", action.payload.token);
     },
