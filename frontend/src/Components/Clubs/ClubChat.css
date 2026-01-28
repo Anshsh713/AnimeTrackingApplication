@@ -1,191 +1,382 @@
-/* ========= PAGE CONTAINER ========= */
-.club-chat {
-  padding: 20px;
-  max-width: 900px;
-  width: 100%;
-  margin: auto;
+/* ========= CONTAINER ========= */
+.club-chat-container {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  height: calc(100vh - 80px);
+  /* Adjust based on navbar height if needed */
+  background-color: var(--background);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ========= HEADER ========= */
+.chat-header {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  background-color: var(--color5);
   color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  gap: 12px;
 }
 
-/* Title */
-.club-chat h2 {
-  text-align: center;
-  font-size: 28px;
-  font-weight: 700;
+.back-btn,
+.icon-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background 0.2s;
 }
 
-/* ========= MESSAGE AREA ========= */
-.messages {
-  background: #0f0f14;
-  padding: 18px;
-  height: 450px;
+.back-btn:hover,
+.icon-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.club-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.club-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color1);
+  color: var(--color5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.club-text {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.club-text h3 {
+  margin: 0;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.member-count {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+/* ========= MESSAGES AREA ========= */
+.messages-area {
+  flex: 1;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  /* Subtle pattern */
+  background-size: 20px 20px;
+  padding: 20px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  border-radius: 14px;
-  border: 1px solid rgba(100, 100, 255, 0.2);
+  gap: 8px;
 }
 
-/* Scrollbar */
-.messages::-webkit-scrollbar {
+/* Scrollbar Styling */
+.messages-area::-webkit-scrollbar {
   width: 6px;
 }
-.messages::-webkit-scrollbar-thumb {
-  background: #555;
-  border-radius: 6px;
+
+.messages-area::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
 }
 
 /* ========= MESSAGE BUBBLES ========= */
-.message {
-  background: #1c1c22;
-  padding: 12px 16px;
-  border-radius: 12px;
-  width: fit-content;
+.message-row {
+  display: flex;
+  width: 100%;
+}
+
+.message-row.mine {
+  justify-content: flex-end;
+}
+
+.message-row.others {
+  justify-content: flex-start;
+}
+
+.message-bubble {
   max-width: 70%;
-  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  position: relative;
+  font-size: 0.95rem;
   line-height: 1.4;
+  word-wrap: break-word;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.message.mine {
-  margin-left: auto;
-  background: #4a8fff;
-  color: #fff;
-  border-bottom-right-radius: 4px;
+/* My Messages */
+.message-row.mine .message-bubble {
+  background-color: #d9fdd3;
+  /* WhatsApp Light Green or use var(--color3) */
+  /* Using Variable for brand consistency but maybe lighter */
+  background-color: var(--color3);
+  color: white;
+  border-top-right-radius: 0;
 }
 
-.message:not(.mine) {
-  border-bottom-left-radius: 4px;
+/* Others Messages */
+.message-row.others .message-bubble {
+  background-color: white;
+  color: black;
+  border-top-left-radius: 0;
 }
 
-/* Username */
-.message b {
-  color: #c5c5ff;
+/* Dark Mode Adjustments */
+:root[data-theme="dark"] .message-row.others .message-bubble {
+  background-color: #1f2c34;
+  color: white;
 }
 
-/* ========= SPOILER ========= */
+:root[data-theme="dark"] .messages-area {
+  background-color: #0b141a;
+  /* WhatsApp Dark BG */
+  background-image: none;
+}
+
+.sender-name {
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--color6);
+  margin-bottom: 2px;
+}
+
+.message-row.mine .sender-name {
+  display: none;
+  /* Don't show my name */
+}
+
+.message-time {
+  font-size: 0.7rem;
+  opacity: 0.7;
+  text-align: right;
+  display: block;
+  margin-top: 4px;
+}
+
+/* ========= SPOILER & RATING ========= */
 .spoiler {
   cursor: pointer;
   transition: 0.2s;
-}
-.spoiler.blur {
-  filter: blur(6px);
-  opacity: 0.5;
-}
-.spoiler.revealed {
-  filter: none;
-  opacity: 1;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 0 4px;
 }
 
-/* ========= RATING TAG ========= */
+.spoiler.blur {
+  filter: blur(5px);
+  user-select: none;
+}
+
+.spoiler.revealed {
+  filter: none;
+}
+
 .rating-tag {
-  margin-left: 10px;
-  padding: 3px 8px;
-  font-size: 12px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.2);
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: bold;
+  background: rgba(255, 213, 0, 0.3);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+/* ========= INPUT AREA ========= */
+.chat-input-area {
+  padding: 10px 16px;
+  background-color: var(--background);
+  /* Or distinct color */
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+:root[data-theme="dark"] .chat-input-area {
+  background-color: #1f2c34;
+  border-top: 1px solid #2a3942;
+}
+
+.input-wrapper {
+  flex: 1;
+  background-color: white;
+  border-radius: 24px;
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+}
+
+:root[data-theme="dark"] .input-wrapper {
+  background-color: #2a3942;
+}
+
+.input-wrapper textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  resize: none;
+  height: 24px;
+  /* Expandable in future */
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--textcolor);
+  padding: 0;
+  line-height: 24px;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  color: #8696a0;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-btn:hover {
+  color: var(--color3);
+}
+
+.action-btn.active {
+  color: var(--color7);
+}
+
+.send-btn-round {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: var(--color3);
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.send-btn-round:hover {
+  background-color: var(--color4);
+}
+
+/* Extra Actions */
+.extra-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.rating-input-mini {
+  width: 40px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  background: transparent;
+  color: var(--textcolor);
 }
 
 /* ========= POLL POPUP ========= */
+.poll-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
 .poll-popup {
-  background: #1b1b24;
-  padding: 15px;
-  border-radius: 12px;
-  border: 1px solid rgba(120, 120, 255, 0.3);
+  background: var(--background);
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.poll-popup h3 {
+  margin: 0 0 10px 0;
+  color: var(--textcolor);
 }
 
 .poll-popup input {
   padding: 10px;
-  background: #111119;
-  border: 1px solid #444;
-  border-radius: 8px;
-  color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--textcolor);
 }
 
-/* ========= INPUT SECTION ========= */
-.chat-input textarea {
-  width: 100%;
-  height: 70px;
-  background: #15151c;
-  padding: 12px;
-  border: 1px solid #444;
-  color: white;
-  border-radius: 10px;
-  resize: none;
-}
-
-/* Input row */
-.input-row {
+.poll-actions {
   display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
   margin-top: 10px;
 }
 
-.spoiler-check {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-}
-
-/* Rating input */
-.input-row input[type="number"] {
-  width: 90px;
-  background: #111119;
-  border: 1px solid #444;
-  border-radius: 8px;
-  padding: 8px;
-  color: white;
-}
-
-/* Buttons */
-.send-btn,
-.poll-btn {
-  padding: 9px 18px;
-  border-radius: 8px;
-  color: white;
+.poll-actions button {
+  padding: 8px 16px;
+  border-radius: 5px;
   cursor: pointer;
-  font-weight: 600;
   border: none;
-  transition: 0.2s;
+  font-weight: bold;
 }
 
-.send-btn {
-  background: #4a90e2;
-}
-.send-btn:hover {
-  background: #69a8ff;
+.cancel-btn {
+  background: transparent;
+  color: var(--textcolor);
 }
 
-.poll-btn {
-  background: #8a5cff;
-}
-.poll-btn:hover {
-  background: #a07bff;
+.create-btn {
+  background: var(--color3);
+  color: white;
 }
 
-/* ========= RESPONSIVE ========= */
+/* Responsive */
 @media (max-width: 600px) {
-  .club-chat {
-    padding: 15px;
-  }
-
-  .club-chat h2 {
-    font-size: 22px;
-  }
-
-  .message {
+  .message-bubble {
     max-width: 85%;
-  }
-
-  .messages {
-    height: 380px;
   }
 }

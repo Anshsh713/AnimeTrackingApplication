@@ -11,59 +11,72 @@ export default function Clubs() {
     return <h2 style={{ color: "white" }}>Loading Clubs...</h2>;
 
   return (
-    <div className="clubs-page">
-      {" "}
-      {/* Main page wrapper */}
-      {/* Header row */}
-      <div className="clubs-header">
-        <h1>Your Clubs</h1> {/* Page title */}
+    <div className="CL-container">
+      {/* Cinematic Header */}
+      <div className="CL-header">
+        <div className="CL-header-text">
+          <h1 className="CL-title">Club Dashboard</h1>
+          <p className="CL-subtitle">Connect with fellow fans and grow your community</p>
+        </div>
         <Link to="/clubs/create">
-          {" "}
-          {/* Navigate to create */}
-          <button className="create-btn">Create Club</button>
+          <button className="CL-create-btn">
+            <i className="fa-solid fa-plus"></i>
+            <span>Create New Club</span>
+          </button>
         </Link>
       </div>
-      {/* Clubs you joined */}
-      <h2 className="section-title">Joined Clubs</h2>
-      <div className="clubs-grid">
-        {" "}
-        {/* Grid layout */}
-        {myClubs.map(
-          (
-            club // Loop joined clubs
-          ) => (
-            <Link to={`/clubs/${club._id}`} key={club._id}>
-              <div className="club-card">
-                {" "}
-                {/* Club card */}
-                <h3>{club.name}</h3> {/* Name */}
-                <p>{club.description}</p> {/* Description */}
-                <p>{club.members.length} Members</p> {/* Member count */}
+
+      {/* Joined Clubs Section */}
+      <div className="CL-section">
+        <h2 className="CL-section-title">Your Member Clubs</h2>
+        <div className="CL-grid">
+          {myClubs.map((club) => (
+            <Link to={`/clubs/${club._id}`} key={club._id} className="CL-card-link">
+              <div className="CL-card joined">
+                <div className="CL-card-badge">Joined</div>
+                <div className="CL-card-content">
+                  <h3>{club.name}</h3>
+                  <p>{club.description}</p>
+                </div>
+                <div className="CL-card-footer">
+                  <div className="CL-stat">
+                    <i className="fa-solid fa-users"></i>
+                    <span>{club.members.length} Members</span>
+                  </div>
+                  <div className="CL-go-btn">
+                    <i className="fa-solid fa-arrow-right"></i>
+                  </div>
+                </div>
               </div>
             </Link>
-          )
-        )}
+          ))}
+        </div>
       </div>
-      {/* Clubs not joined yet */}
-      <h2 className="section-title">Discover Clubs</h2>
-      <div className="clubs-grid">
-        {" "}
-        {/* Grid */}
-        {otherClubs.map(
-          (
-            club // Loop discover list
-          ) => (
-            <Link to={`/clubs/${club._id}`} key={club._id}>
-              <div className="club-card explore">
-                {" "}
-                {/* Explore-style card */}
-                <h3>{club.name}</h3>
-                <p>{club.description}</p>
-                <p>{club.members.length} Members</p>
+
+      {/* Discovery Section */}
+      <div className="CL-section discovery">
+        <h2 className="CL-section-title">Discover New Communities</h2>
+        <div className="CL-grid">
+          {otherClubs.map((club) => (
+            <Link to={`/clubs/${club._id}`} key={club._id} className="CL-card-link">
+              <div className="CL-card explore">
+                <div className="CL-card-content">
+                  <h3>{club.name}</h3>
+                  <p>{club.description}</p>
+                </div>
+                <div className="CL-card-footer">
+                  <div className="CL-stat">
+                    <i className="fa-solid fa-users"></i>
+                    <span>{club.members.length} Members</span>
+                  </div>
+                  <div className="CL-join-cta">
+                    <span>View Club</span>
+                  </div>
+                </div>
               </div>
             </Link>
-          )
-        )}
+          ))}
+        </div>
       </div>
     </div>
   );

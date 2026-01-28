@@ -31,11 +31,11 @@ export default function Sign() {
     <div className="Main-box">
       <div className="Signup-main">
         <div className="Signup-text">
-          <h2>Sign Up to Create an Account</h2>
+          <h2>Ascend to the Realm</h2>
           <p>
-            Already have an account? <Link to="/login">Login</Link>
+            Already a legend? <Link to="/login">Login</Link>
           </p>
-          {error && <p>{error}</p>}
+          {error && <p className="error-msg">{error}</p>}
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="input-signup">

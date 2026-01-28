@@ -33,11 +33,11 @@ export default function Login() {
     <div className="Main-box">
       <div className="Login-main">
         <div className="Login-text">
-          <h2>Login in to your Account</h2>
+          <h2>Identify Yourself</h2>
           <p>
-            Don&apos;t have an account? <Link to="/signin">Sign up</Link> here
+            New to the Realm? <Link to="/signin">Cultivate an Account</Link>
           </p>
-          {error && <p>{error}</p>}
+          {error && <p className="error-msg">{error}</p>}
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="input-login">

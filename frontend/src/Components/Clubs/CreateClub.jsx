@@ -39,41 +39,71 @@ export default function CreateClub() {
   };
 
   return (
-    <div className="create-club">
-      {" "}
-      {/* Wrapper */}
-      <h1>Create Club</h1> {/* Title */}
-      {/* Club name */}
-      <input
-        placeholder="Club Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      {/* Description */}
-      <textarea
-        placeholder="Description"
-        value={desc}
-        onChange={(e) => setDesc(e.target.value)}
-      />
-      {!isUnlimited && ( // Show when limited
-        <input
-          type="number"
-          placeholder="Max Members"
-          value={maxMembers === 99999 ? "" : maxMembers}
-          onChange={handleLimitChange}
-        />
-      )}
-      <label className="checkbox-row">
-        {" "}
-        {/* Unlimited toggle */}
-        <input
-          type="checkbox"
-          checked={isUnlimited}
-          onChange={toggleUnlimited}
-        />
-        Unlimited Members
-      </label>
-      <button onClick={submit}>Create</button> {/* Submit button */}
+    <div className="CC-container">
+      <div className="CC-header">
+        <button className="CC-back-btn" onClick={() => navigate("/clubs")}>
+          <i className="fa-solid fa-arrow-left"></i>
+          <span>Back to Dashboard</span>
+        </button>
+      </div>
+
+      <div className="CC-card">
+        <div className="CC-card-header">
+          <h1>Create New Club</h1>
+          <p>Launch your community and invite members</p>
+        </div>
+
+        <div className="CC-form">
+          <div className="CC-input-group">
+            <label>Club Name</label>
+            <input
+              placeholder="e.g. Elite Anime Discuss"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              autoFocus
+            />
+          </div>
+
+          <div className="CC-input-group">
+            <label>Description</label>
+            <textarea
+              placeholder="What is this club about? (min 10 characters)"
+              value={desc}
+              onChange={(e) => setDesc(e.target.value)}
+            />
+          </div>
+
+          <div className="CC-limit-section">
+            <label className="CC-checkbox-row">
+              <div className="CC-checkbox-wrapper">
+                <input
+                  type="checkbox"
+                  checked={isUnlimited}
+                  onChange={toggleUnlimited}
+                />
+                <div className="CC-checkbox-mark"></div>
+              </div>
+              <span>Unlimited Members</span>
+            </label>
+
+            {!isUnlimited && (
+              <div className="CC-input-group compact">
+                <label>Max Members</label>
+                <input
+                  type="number"
+                  placeholder="50"
+                  value={maxMembers === 99999 ? "" : maxMembers}
+                  onChange={handleLimitChange}
+                />
+              </div>
+            )}
+          </div>
+
+          <button className="CC-submit-btn" onClick={submit}>
+            Create Community
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

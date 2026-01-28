@@ -10,6 +10,20 @@ export default function GlobalReviews({ mine = false }) {
   const [text, setText] = useState(""); // New review input
   const [rating, setRating] = useState(10); // Rating input
   const [commentText, setCommentText] = useState({}); // Comment input per review
+  const [expandedReviews, setExpandedReviews] = useState({}); // Track expanded comments per review
+
+  // Toggle comment thread
+  const toggleComments = (reviewId) => {
+    setExpandedReviews(prev => ({
+      ...prev,
+      [reviewId]: !prev[reviewId]
+    }));
+
+    // Initialize comment input if not present
+    if (commentText[reviewId] === undefined) {
+      setCommentText(prev => ({ ...prev, [reviewId]: "" }));
+    }
+  };
 
   // Fetch all reviews
   const fetchReviews = async () => {
@@ -62,77 +76,130 @@ export default function GlobalReviews({ mine = false }) {
   }, []);
 
   return (
-    <div className="review-container">
-      {/* Dynamic title */}
-      <h2>{mine ? "Your Reviews" : "All Reviews"}</h2>
-
-      {/* Write a new review */}
-      <div className="review-create">
-        <textarea
-          placeholder="Write your review..."
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
-
-        <input
-          type="number"
-          min="1"
-          max="10"
-          value={rating}
-          onChange={(e) => setRating(e.target.value)}
-        />
-
-        <button onClick={submitReview}>Post Review</button>
+    <div className="TR-container">
+      {/* Feed Header */}
+      <div className="TR-feed-header">
+        <h2>{mine ? "Your Feed" : "For You"}</h2>
       </div>
 
-      {/* Review cards */}
-      <div className="review-list">
-        {reviews.map((rev) => (
-          <div className="review-card" key={rev._id}>
-            {/* Review header */}
-            <h4>
-              {rev.user.name} — Rating: {rev.rating}/10
-            </h4>
-
-            {/* Review text */}
-            <p>{rev.text}</p>
-
-            {/* Like / Dislike actions */}
-            <div className="review-actions">
-              <button onClick={() => likeReview(rev._id)}>
-                Like {rev.likes?.length}
-              </button>
-
-              <button onClick={() => dislikeReview(rev._id)}>
-                Dislike {rev.dislikes?.length}
+      {/* Compose Review (Tweet-style) */}
+      {!mine && (
+        <div className="TR-compose">
+          <div className="TR-avatar-side">
+            <div className="TR-avatar-circle" style={{ background: "linear-gradient(135deg, #1d9bf0, #00ba7c)" }}>
+              {user?.name?.charAt(0) || "A"}
+            </div>
+          </div>
+          <div className="TR-compose-content">
+            <textarea
+              placeholder="What's your take on this anime?"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+            />
+            <div className="TR-compose-footer">
+              <div className="TR-rating-input">
+                <span>Rating:</span>
+                <input
+                  type="number"
+                  min="1"
+                  max="10"
+                  value={rating}
+                  onChange={(e) => setRating(e.target.value)}
+                />
+              </div>
+              <button className="TR-post-btn" onClick={submitReview}>
+                Post Review
               </button>
             </div>
+          </div>
+        </div>
+      )}
 
-            {/* Comments section */}
-            <div className="comment-box">
-              <h5>Comments</h5>
+      {/* Review Feed */}
+      <div className="TR-feed">
+        {reviews.map((rev) => (
+          <div className="TR-tweet" key={rev._id} onClick={() => toggleComments(rev._id)}>
+            <div className="TR-avatar-side">
+              <div
+                className="TR-avatar-circle"
+                style={{ background: `hsl(${(rev.user.name.length * 40) % 360}, 70%, 60%)` }}
+              >
+                {rev.user?.name?.charAt(0) || "U"}
+              </div>
+            </div>
 
-              {rev.comments.map((c, i) => (
-                <p key={i} className="comment-item">
-                  <strong>{c.user?.name}: </strong> {c.text}
-                </p>
-              ))}
+            <div className="TR-tweet-content">
+              {/* User Identity */}
+              <div className="TR-user-info">
+                <span className="TR-name">{rev.user.name}</span>
+                <span className="TR-handle">@{rev.user.name.toLowerCase().replace(/\s/g, "")} · Review</span>
+                <span className="TR-rating-badge">{rev.rating}/10</span>
+              </div>
 
-              {/* Input only shown if logged in */}
-              {user && (
-                <div className="comment-input">
-                  <input
-                    placeholder="Add a comment..."
-                    value={commentText[rev._id] || ""}
-                    onChange={(e) =>
-                      setCommentText((prev) => ({
-                        ...prev,
-                        [rev._id]: e.target.value,
-                      }))
-                    }
-                  />
+              {/* Review Text */}
+              <div className="TR-text">
+                {rev.text}
+              </div>
 
-                  <button onClick={() => addComment(rev._id)}>Comment</button>
+              {/* Action Buttons (Twitter Style) */}
+              <div className="TR-actions">
+                <div
+                  className={`TR-action reply ${expandedReviews[rev._id] ? "active" : ""}`}
+                  onClick={(e) => { e.stopPropagation(); toggleComments(rev._id); }}
+                >
+                  <i className={expandedReviews[rev._id] ? "fa-solid fa-comment" : "fa-regular fa-comment"}></i>
+                  <span>{rev.comments?.length || 0}</span>
+                </div>
+
+                <div className="TR-action heart" onClick={(e) => { e.stopPropagation(); likeReview(rev._id); }}>
+                  <i className={rev.likes?.includes(user?._id) ? "fa-solid fa-heart active" : "fa-regular fa-heart"}></i>
+                  <span>{rev.likes?.length || 0}</span>
+                </div>
+
+                <div className="TR-action share" onClick={(e) => e.stopPropagation()}>
+                  <i className="fa-regular fa-share-from-square"></i>
+                </div>
+              </div>
+
+              {/* Comments Section (Threaded - Expanded on Click) */}
+              {expandedReviews[rev._id] && (
+                <div className="TR-comments-thread" onClick={(e) => e.stopPropagation()}>
+                  {rev.comments.map((c, i) => (
+                    <div key={i} className="TR-comment">
+                      <div
+                        className="TR-comment-avatar"
+                        style={{ background: `hsl(${(c.user?.name?.length * 40 || 0) % 360}, 60%, 50%)` }}
+                      >
+                        {c.user?.name?.charAt(0) || "?"}
+                      </div>
+                      <div className="TR-comment-main">
+                        <div className="TR-comment-info">
+                          <span className="TR-name-small">{c.user?.name}</span>
+                          <span className="TR-handle-small">@{c.user?.name?.toLowerCase().replace(/\s/g, "")}</span>
+                        </div>
+                        <div className="TR-comment-text">{c.text}</div>
+                      </div>
+                    </div>
+                  ))}
+
+                  {/* Add Comment Input */}
+                  {user && (
+                    <div className="TR-comment-compose">
+                      <input
+                        placeholder="Post your reply"
+                        value={commentText[rev._id] || ""}
+                        onChange={(e) =>
+                          setCommentText((prev) => ({
+                            ...prev,
+                            [rev._id]: e.target.value,
+                          }))
+                        }
+                        onKeyPress={(e) => e.key === 'Enter' && addComment(rev._id)}
+                        autoFocus
+                      />
+                      <button onClick={() => addComment(rev._id)}>Reply</button>
+                    </div>
+                  )}
                 </div>
               )}
             </div>

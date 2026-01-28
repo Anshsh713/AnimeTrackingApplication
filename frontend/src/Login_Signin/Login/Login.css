@@ -1,200 +1,216 @@
-/* MAIN WRAPPER */
+@import url("../../index.css");
+
+/* ==========================================
+   MAIN WRAPPER
+========================================== */
 .Main-box {
   width: 100%;
   min-height: 100vh;
-  background-color: var(--background);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
-}
-
-/* LOGIN CARD */
-.Login-main {
-  width: 40%; /* Desktop size */
   padding: 2rem;
-  background-color: var(--color2);
-  box-shadow: 10px 10px 0 rgba(0, 0, 0, 1);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  transition: 0.3s;
+  position: relative;
+
+  /* AUTH BACKGROUND */
+  background: url("../../Images/AuthBG.png") no-repeat center center/cover;
 }
 
-/* HOVER EFFECT */
-.Login-main:hover {
-  box-shadow: 20px 20px 0 rgba(0, 0, 0, 1);
-}
-
-.Login-main:hover .Login-text h2 {
-  text-shadow: 0.6px 0.6px 0 rgba(0, 0, 0, 1);
-}
-
-/* HEADER TEXT */
-.Login-text {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.Login-text h2 {
-  font-size: 1.7rem;
-  color: var(--textcolor);
-  font-weight: 700;
-  transition: 0.3s;
-}
-
-.Login-text p {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--color5);
-}
-
-.Login-text p a {
-  color: var(--color3);
-}
-
-.Login-text p a:hover {
-  color: var(--textcolor);
-}
-
-/* FORM STYLING */
-form {
-  margin-top: 3rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+/* Dark overlay to ensure readability */
+.Main-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
 }
 
-/* INPUT GROUP */
-.input-login {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  width: 100%;
-}
-
-.input-login label {
-  font-size: 1.1rem;
-  width: 30%;
-  color: var(--textcolor);
-}
-
-.input-login input {
-  width: 70%;
-  padding-left: 5px;
-  color: var(--textcolor);
-  background: transparent;
-  border-bottom: 1px solid var(--color3);
-}
-
-/* INPUT FOCUS */
-input:focus {
-  border-bottom: 1.5px solid var(--color3);
-  outline: none;
-}
-
-/* BUTTON */
-.Login-main button {
-  background-color: var(--color6);
-  font-size: 1.1rem;
-  font-weight: 500;
-  border: 1px solid var(--textcolor);
-  width: 50%;
-  height: 3rem;
-  margin: 1rem auto 0;
-  transition: 0.3s;
-}
-
-.Login-main button:hover {
-  border-radius: 50px;
+[data-theme="dark"] .Main-box::before {
+  background: rgba(0, 0, 0, 0.6);
 }
 
 /* ==========================================
-   🔥 RESPONSIVE DESIGN (ALL DEVICES)
-   ========================================== */
+   LOGIN CARD (GLASSMORPHISM)
+========================================== */
+.Login-main {
+  width: 100%;
+  max-width: 450px;
+  padding: 3rem;
+  background: rgba(15, 23, 42, 0.85);
+  /* High opacity for readability */
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  animation: cardFadeIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-/* Tablets & Small Laptops */
-@media (max-width: 1024px) {
-  .Login-main {
-    width: 55%;
-    padding: 2rem;
+.Login-main:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.6);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] .Login-main {
+  background: rgba(10, 18, 30, 0.95);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================
+   HEADER TEXT
+========================================== */
+.Login-text {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.Login-text h2 {
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+  color: white;
+  /* Always white for contrast against BG */
+  margin-bottom: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.Login-text p {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.Login-text p a {
+  color: var(--color1);
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.Login-text p a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.error-msg {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  margin-top: 10px;
+  font-weight: 500;
+  background: rgba(255, 107, 107, 0.1);
+  padding: 8px;
+  border-radius: 8px;
+}
+
+/* ==========================================
+   FORM STYLING
+========================================== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-login {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.input-login label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.input-login input {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.input-login input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.input-login input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--color1);
+  box-shadow: 0 0 15px rgba(255, 221, 87, 0.2);
+}
+
+/* ==========================================
+   BUTTON
+========================================== */
+.Login-main button {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: var(--color1);
+  color: var(--color5);
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-title);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 8px 20px rgba(255, 221, 87, 0.2);
+}
+
+.Login-main button:hover:not(:disabled) {
+  transform: scale(1.02);
+  background: white;
+  box-shadow: 0 12px 25px rgba(255, 255, 255, 0.3);
+}
+
+.Login-main button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.Login-main button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   ANIMATIONS
+========================================== */
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* Tablets */
-@media (max-width: 768px) {
+/* ==========================================
+   RESPONSIVE
+========================================== */
+@media (max-width: 480px) {
   .Login-main {
-    width: 70%;
-    padding: 1.8rem;
-  }
-
-  .input-login label {
-    font-size: 1rem;
-  }
-
-  .Login-main button {
-    width: 60%;
-  }
-}
-
-/* Large Mobiles */
-@media (max-width: 600px) {
-  .Login-main {
-    width: 90%;
-    padding: 1.5rem;
-  }
-
-  /* Stack label + input vertically */
-  .input-login {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .input-login label {
-    width: 100%;
-  }
-
-  .input-login input {
-    width: 100%;
-    font-size: 1rem;
-  }
-
-  .Login-main button {
-    width: 80%;
-  }
-}
-
-/* Small Mobiles */
-@media (max-width: 450px) {
-  .Login-main {
-    width: 95%;
-    padding: 1.2rem;
-    box-shadow: 6px 6px 0 rgba(0, 0, 0, 1);
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
   }
 
   .Login-text h2 {
-    font-size: 1.4rem;
-  }
-
-  .Login-main button {
-    width: 90%;
-  }
-}
-
-/* Extra Small (under 360px) */
-@media (max-width: 360px) {
-  .Login-main {
-    padding: 1rem;
-  }
-
-  .Login-text h2 {
-    font-size: 1.2rem;
-  }
-
-  .Login-main button {
-    height: 2.7rem;
+    font-size: 1.5rem;
   }
 }

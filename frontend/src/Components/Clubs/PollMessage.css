@@ -2,103 +2,90 @@
    Poll Message Box
 ================================ */
 .poll-message {
-  width: 100%; /* Full width */
-  background: #1e1f25; /* Dark card */
-  padding: 18px; /* Inner spacing */
-  margin: 12px 0; /* Space between messages */
-  border-radius: 10px; /* Smooth corners */
-  border-left: 4px solid #4caf50; /* Green accent line */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25); /* Soft shadow */
-  animation: fadeIn 0.2s ease; /* Entry animation */
-  display: flex; /* Column layout */
+  width: 100%;
+  /* Full width of container */
+  background: transparent;
+  padding: 5px 0;
+  margin: 0;
+  border-radius: 0;
+  border-left: none;
+  box-shadow: none;
+  display: flex;
+  /* Column layout */
   flex-direction: column;
-  gap: 12px; /* Space between elements */
+  gap: 12px;
+  /* Space between elements */
 }
 
 /* Poll question */
 .poll-message h4 {
-  margin: 0; /* No extra spacing */
-  color: #fff; /* White text */
-  font-size: 1.15rem; /* Slightly big */
-  font-weight: 600; /* Semi-bold */
+  margin: 0;
+  /* No extra spacing */
+  color: inherit;
+  /* Inherit from bubble text color */
+  font-size: 1rem;
+  font-weight: 700;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 /* Options wrapper */
 .poll-options {
   display: flex;
-  flex-direction: column; /* Stack options */
-  width: 100%; /* Full width */
-  gap: 10px; /* Space between options */
+  flex-direction: column;
+  /* Stack options */
+  width: 100%;
+  /* Full width */
+  gap: 8px;
+  /* Space between options */
 }
 
 /* Poll option button */
 .poll-btn-option {
-  width: 100%; /* Full width */
-  padding: 12px 16px; /* Comfortable size */
-  background: #2b2d33; /* Dark background */
-  color: #fff; /* White text */
-  border-radius: 8px; /* Rounded */
-  border: 1px solid #3c3f46; /* Border */
-  text-align: left; /* Align text left */
-  cursor: pointer; /* Clickable */
-  transition: 0.2s ease; /* Smooth hover */
-  font-size: 1rem; /* Medium text */
+  width: 100%;
+  /* Full width */
+  padding: 10px 14px;
+  /* Comfortable size */
+  background: rgba(0, 0, 0, 0.05);
+  /* Subtle bg */
+  color: inherit;
+  /* Inherit text color */
+  border-radius: 8px;
+  /* Rounded */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: left;
+  /* Align text left */
+  cursor: pointer;
+  /* Clickable */
+  transition: 0.2s ease;
+  /* Smooth hover */
+  font-size: 0.9rem;
+  /* Medium text */
 }
 
 /* Hover effect */
 .poll-btn-option:hover {
-  background: #4caf50; /* Green on hover */
-  border-color: #4caf50; /* Match border */
-  transform: translateY(-2px); /* Lift effect */
+  background: rgba(0, 0, 0, 0.1);
+  transform: translateX(2px);
 }
 
-/* Entry animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Dark Mode Overrides (if needed manually, but inheritance should work) */
+:root[data-theme="dark"] .poll-btn-option {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+:root[data-theme="dark"] .poll-btn-option:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 /* ===============================
    RESPONSIVE DESIGN
 ================================ */
-
-/* Tablets */
-@media (max-width: 900px) {
-  .poll-message {
-    padding: 16px; /* Slightly smaller */
-  }
-  .poll-btn-option {
-    font-size: 0.95rem; /* Slightly smaller text */
-  }
-}
-
-/* Phones */
 @media (max-width: 600px) {
-  .poll-message {
-    padding: 14px;
-  }
-  .poll-message h4 {
-    font-size: 1rem; /* Reduce title size */
-  }
-  .poll-btn-option {
-    font-size: 0.9rem; /* Smaller text */
-    padding: 10px 14px; /* Compact padding */
-  }
-}
-
-/* Small Phones */
-@media (max-width: 400px) {
-  .poll-message {
-    padding: 12px;
-  }
   .poll-btn-option {
     font-size: 0.85rem;
-    padding: 9px 12px;
+    padding: 8px 12px;
   }
 }

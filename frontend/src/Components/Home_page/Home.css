@@ -1,87 +1,64 @@
+@import url("../../index.css");
+
 /* =========================================
-   MAIN HOME WRAPPER (Desktop layout)
+   MAIN HOME WRAPPER
 ========================================= */
 .home-wrapper {
   display: flex;
-  gap: 22px;
-
-  width: 100%;
+  gap: 32px;
+  width: 95%;
   max-width: 1500px;
   margin: 0 auto;
-
-  padding: 20px;
+  padding: 40px 0;
   box-sizing: border-box;
-
   align-items: flex-start;
-  overflow-x: hidden;
+  min-height: 100vh;
 }
 
 /* =========================================
-   LEFT COLUMN – Main content
+   LEFT COLUMN – Main Content
 ========================================= */
 .home-left {
-  flex: 2.2;
+  flex: 2.5;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 /* =========================================
-   RIGHT COLUMN – Sticky sidebar
+   RIGHT COLUMN – Sticky Sidebar
 ========================================= */
 .home-right {
   flex: 1;
-  min-width: 330px;
-  max-width: 350px;
-
+  min-width: 350px;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-
+  gap: 30px;
   position: sticky;
-  top: 20px;
+  top: 40px;
 }
 
-/* =======================================================
-   🔥 RESPONSIVE BREAKPOINTS
-   Optimized for Tablet → iPad → Mobile → Small Phone
-======================================================== */
+/* Additional spacing for internal components */
+.home-right>* {
+  margin-bottom: 10px;
+}
 
 /* =========================================
-   TABLETS (1024px and below)
+   RESPONSIVE BREAKPOINTS
 ========================================= */
+@media (max-width: 1200px) {
+  .home-wrapper {
+    gap: 20px;
+    width: 98%;
+  }
+}
+
 @media (max-width: 1024px) {
   .home-wrapper {
     flex-direction: column;
-    padding: 15px;
-  }
-
-  .home-right {
-    position: relative; /* disable sticky */
-    max-width: 100%;
-    min-width: 100%;
-  }
-}
-
-/* =========================================
-   LARGE PHONES (600–900px)
-========================================= */
-@media (max-width: 900px) {
-  .home-wrapper {
-    padding: 12px;
-    gap: 16px;
-  }
-
-  .home-right {
-    gap: 16px;
-  }
-}
-
-/* =========================================
-   MOBILE (≤ 600px)
-========================================= */
-@media (max-width: 600px) {
-  .home-wrapper {
-    padding: 10px;
-    gap: 14px;
+    padding: 20px;
+    align-items: center;
   }
 
   .home-left {
@@ -89,44 +66,16 @@
   }
 
   .home-right {
+    position: relative;
+    top: 0;
+    max-width: 100%;
+    min-width: 100%;
     width: 100%;
-    gap: 15px;
-  }
-
-  /* Make sliders more compact on mobile */
-  .home-left section h2 {
-    font-size: 18px;
   }
 }
 
-/* =========================================
-   SMALL PHONES / NOTCH DEVICES (≤ 450px)
-========================================= */
-@media (max-width: 450px) {
+@media (max-width: 600px) {
   .home-wrapper {
-    padding: 8px;
-  }
-
-  .home-right {
-    gap: 12px;
-  }
-
-  /* Reduce heading sizes globally */
-  .home-left h2,
-  .home-right h2 {
-    font-size: 17px !important;
-  }
-}
-
-/* =========================================
-   ULTRA SMALL DEVICES (≤ 360px)
-========================================= */
-@media (max-width: 360px) {
-  .home-wrapper {
-    padding: 5px;
-  }
-
-  .home-right {
-    gap: 10px;
+    padding: 15px;
   }
 }

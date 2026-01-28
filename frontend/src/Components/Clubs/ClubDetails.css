@@ -1,134 +1,306 @@
-/* ============================
-   Club Details Page Container
-============================ */
-.club-details {
-  max-width: 700px; /* Limit width */
-  margin: 40px auto; /* Center */
-  padding: 30px;
-  color: white;
-  background: rgba(25, 25, 35, 0.85); /* Glass card */
-  border-radius: 15px;
-  border: 1px solid rgba(140, 140, 255, 0.25);
-  box-shadow: 0 6px 14px rgba(120, 120, 255, 0.25);
-  animation: fadeIn 0.4s ease; /* Smooth entry */
+@import url("../../index.css");
+
+/***************************************
+  PAGE CONTAINER
+****************************************/
+.CD-container {
+  width: 95%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  min-height: 100vh;
 }
 
-.club-details h1 {
-  font-size: 36px;
-  color: #dcdcff;
-  margin-bottom: 15px;
+/***************************************
+  HEADER
+****************************************/
+.CD-header {
+  margin-bottom: 25px;
 }
 
-.club-details p {
-  font-size: 17px;
-  margin: 8px 0;
-  opacity: 0.9;
-}
-
-/* ============================
-   Buttons (Join, Leave, Polls, Chat)
-============================ */
-.club-details button {
-  padding: 12px 18px;
-  margin: 10px 10px 10px 0;
+.CD-back-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.4);
+  padding: 8px 16px;
   border-radius: 10px;
-  border: none;
-  background: linear-gradient(135deg, #6a5cff, #8a7bff);
-  color: white;
-  font-size: 17px;
+  font-size: 0.85rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
 }
 
-.club-details button:hover {
-  background: linear-gradient(135deg, #8b7bff, #a99aff);
+.CD-back-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+/***************************************
+  CLUB CARD (DASHBOARD)
+****************************************/
+.CD-card {
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
+}
+
+/***************************************
+  HERO SECTION
+****************************************/
+.CD-hero {
+  position: relative;
+  padding: 60px 50px;
+  background: linear-gradient(135deg, rgba(255, 221, 87, 0.15), rgba(0, 0, 0, 0.4));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.CD-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at top right, rgba(255, 221, 87, 0.1), transparent);
+}
+
+.CD-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.CD-title {
+  font-family: var(--font-title);
+  font-size: 3rem;
+  font-weight: 900;
+  color: white;
+  letter-spacing: -1.5px;
+  margin-bottom: 15px;
+  line-height: 1;
+}
+
+.CD-desc {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 700px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.CD-meta {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.CD-stat-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 16px;
+  border-radius: 50px;
+  color: white;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+}
+
+.CD-stat-pill i {
+  color: var(--color1);
+}
+
+.CD-stat-pill.admin i {
+  color: #ff9800;
+}
+
+/***************************************
+  CONTROLS SECTION
+****************************************/
+.CD-controls {
+  padding: 40px 50px;
+  background: rgba(255, 255, 255, 0.02);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.CD-actions-main {
+  display: flex;
+  gap: 15px;
+}
+
+.CD-btn {
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+  border: none;
+}
+
+.CD-btn.primary {
+  background: white;
+  color: var(--color5);
+}
+
+.CD-btn.accent {
+  background: var(--color1);
+  color: var(--color5);
+}
+
+.CD-btn.secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.CD-btn.danger {
+  background: rgba(248, 113, 113, 0.1);
+  color: #f87171;
+  border: 1px solid rgba(248, 113, 113, 0.2);
+}
+
+.CD-btn.leave {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.CD-btn:hover:not(.leave) {
   transform: translateY(-3px);
-  box-shadow: 0 4px 10px rgba(140, 130, 255, 0.45);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Remove link underline */
-.club-details a {
-  text-decoration: none;
+.CD-btn.primary:hover {
+  background: var(--color1);
 }
 
-/* ============================
-   Special Buttons
-============================ */
-.danger-btn {
-  background: #ff4b4b; /* Delete button */
+.CD-btn.danger:hover {
+  background: #f87171;
+  color: white;
 }
 
-.danger-btn:hover {
-  background: #ff6a6a;
+/***************************************
+  ROSTER SECTION
+****************************************/
+.CD-roster {
+  padding: 40px 50px 60px;
 }
 
-/* ============================
-   Members List
-============================ */
-.club-members-list {
-  margin-top: 20px;
+.CD-roster-header {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-.club-members-list ul {
-  list-style: none;
-  padding: 0;
+.CD-roster-header h3 {
+  font-family: var(--font-title);
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+  white-space: nowrap;
 }
 
-.club-members-list li {
-  margin: 4px 0;
-  font-size: 15px;
+.CD-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.05);
 }
 
-.admin-badge {
-  background: #ffd04b; /* Yellow badge */
-  color: #222;
-  padding: 2px 6px;
-  border-radius: 8px;
-  font-size: 11px;
-  margin-left: 6px;
+.CD-members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
 }
 
-/* ============================
-   Fade-In Animation
-============================ */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
+.CD-member-chip {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.CD-member-chip:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+}
+
+.CD-member-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  color: white;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.CD-member-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.CD-member-name {
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.CD-admin-badge {
+  color: var(--color1);
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+/***************************************
+  RESPONSIVE
+****************************************/
+@media (max-width: 768px) {
+
+  .CD-hero,
+  .CD-controls,
+  .CD-roster {
+    padding: 30px;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-/* ============================
-   Responsive Styling
-============================ */
-@media (max-width: 600px) {
-  .club-details {
-    padding: 20px; /* Smaller padding */
-    margin: 20px;
+  .CD-title {
+    font-size: 2.2rem;
   }
 
-  .club-details h1 {
-    font-size: 28px; /* Smaller title */
+  .CD-controls {
+    flex-direction: column;
+    align-items: stretch;
   }
 
-  .club-details button {
-    width: 100%; /* Full width */
-    margin: 8px 0;
-    font-size: 16px;
-  }
-}
-
-/* Ultra small devices */
-@media (max-width: 420px) {
-  .club-members-list li {
-    font-size: 14px;
+  .CD-actions-main {
+    flex-direction: column;
   }
 
-  .club-details p {
-    font-size: 15px;
+  .CD-actions-extra {
+    margin-top: 10px;
   }
 }

@@ -61,42 +61,50 @@ export default function AnimeListPage() {
       {/* Page Title */}
       <h1 className="ALP-title">My Anime List</h1>
 
-      {/* Search Button */}
-      <div className="ALP-top-buttons">
-        <button className="ALP-btn" onClick={() => setSearchPopup(true)}>
-          Search Anime
-        </button>
-      </div>
-
-      {/* Filter Buttons */}
-      <div className="ALP-filters">
-        {[
-          "All",
-          "Watching",
-          "Completed",
-          "On Hold",
-          "Dropped",
-          "Plan to Watch",
-        ].map((status) => (
-          <button
-            key={status}
-            className={`ALP-filter-btn ${filter === status ? "active" : ""}`}
-            onClick={() => setFilter(status)}
-          >
-            {status}
+      <div className="ALP-top-bar">
+        {/* Search Button */}
+        <div className="ALP-top-buttons">
+          <button className="ALP-btn" onClick={() => setSearchPopup(true)}>
+            + Add New Anime
           </button>
-        ))}
+        </div>
+
+        {/* Filter Buttons */}
+        <div className="ALP-filters">
+          {[
+            "All",
+            "Watching",
+            "Completed",
+            "On Hold",
+            "Dropped",
+            "Plan to Watch",
+          ].map((status) => (
+            <button
+              key={status}
+              className={`ALP-filter-btn ${filter === status ? "active" : ""}`}
+              onClick={() => setFilter(status)}
+            >
+              {status}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Empty list message */}
-      {animeList.length === 0 && <p>No anime added yet.</p>}
+      {!loading && animeList.length === 0 && (
+        <div className="ALP-empty">
+          <p>Your anime list is currently empty. Start by adding some favorites!</p>
+        </div>
+      )}
 
       {/* Filtered Anime Cards */}
-      {animeList
-        .filter((a) => filter === "All" || a.status === filter)
-        .map((anime) => (
-          <AnimeCard key={anime._id} anime={anime} />
-        ))}
+      <div className="ALP-list">
+        {animeList
+          .filter((a) => filter === "All" || a.status === filter)
+          .map((anime) => (
+            <AnimeCard key={anime._id} anime={anime} />
+          ))}
+      </div>
 
       {/* Search Popup */}
       {searchPopup && (
@@ -104,35 +112,39 @@ export default function AnimeListPage() {
           <div className="ALP-popup">
             {/* Close Popup */}
             <button className="ALP-close" onClick={() => setSearchPopup(false)}>
-              Close
+              ✕
             </button>
+
+            {/* Search Header */}
+            <h3>Quick Search</h3>
 
             {/* Search Input */}
             <input
               className="ALP-search-input"
               type="text"
-              placeholder="Search anime..."
+              placeholder="Start typing anime title..."
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
+              autoFocus
             />
 
             {/* Suggestions (when text is empty) */}
-            {searchText.trim().length < 2 && (
-              <>
-                <h3>Suggestions For You</h3>
+            {searchText.trim().length < 2 && suggestions.length > 0 && (
+              <div className="ALP-results-list">
+                <h3>Recommended For You</h3>
                 {suggestions.map((anime) => (
                   <div key={anime.id} className="ALP-result">
                     <div className="ALP-result-left">
                       <img
-                        src={anime.coverImage.large}
-                        alt={anime.title.romaji}
+                        src={anime.coverImage?.large}
+                        alt={anime.title?.romaji}
                       />
                       <div>
                         <div className="ALP-result-title">
-                          {anime.title.romaji}
+                          {anime.title?.romaji}
                         </div>
                         <div className="ALP-result-small">
-                          {anime.title.english}
+                          {anime.title?.english}
                         </div>
                       </div>
                     </div>
@@ -145,41 +157,45 @@ export default function AnimeListPage() {
                     </button>
                   </div>
                 ))}
-              </>
+              </div>
             )}
 
             {/* No results */}
             {searchText.trim().length >= 2 && results.length === 0 && (
-              <p>No results found.</p>
+              <div className="ALP-no-results">
+                <p>No titles found matching "{searchText}"</p>
+              </div>
             )}
 
             {/* Search Results */}
-            {searchText.trim().length >= 2 &&
-              results.map((anime) => (
-                <div key={anime.id} className="ALP-result">
-                  <div className="ALP-result-left">
-                    <img
-                      src={anime.coverImage.large}
-                      alt={anime.title.romaji}
-                    />
-                    <div>
-                      <div className="ALP-result-title">
-                        {anime.title.romaji}
-                      </div>
-                      <div className="ALP-result-small">
-                        {anime.title.english}
+            <div className="ALP-results-list">
+              {searchText.trim().length >= 2 &&
+                results.map((anime) => (
+                  <div key={anime.id} className="ALP-result">
+                    <div className="ALP-result-left">
+                      <img
+                        src={anime.coverImage?.large}
+                        alt={anime.title?.romaji}
+                      />
+                      <div>
+                        <div className="ALP-result-title">
+                          {anime.title?.romaji}
+                        </div>
+                        <div className="ALP-result-small">
+                          {anime.title?.english}
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <button
-                    className="ALP-add-btn"
-                    onClick={() => setSelectedAnime(anime)}
-                  >
-                    Add
-                  </button>
-                </div>
-              ))}
+                    <button
+                      className="ALP-add-btn"
+                      onClick={() => setSelectedAnime(anime)}
+                    >
+                      Add
+                    </button>
+                  </div>
+                ))}
+            </div>
           </div>
         </div>
       )}

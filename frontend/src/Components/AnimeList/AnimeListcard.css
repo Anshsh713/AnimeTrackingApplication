@@ -1,42 +1,48 @@
+@import url("../../index.css");
+
 /*******************************************
-  MAIN ANIME CARD
+  MAIN ANIME CARD (SLEEK & REFINED)
 ********************************************/
 .AC-card {
   display: flex;
   align-items: center;
-
   width: 100%;
-  max-width: 950px;
-  margin: 0 auto 14px;
-
-  background: #ffffff;
-  border: 1px solid #dcdcdc;
-  border-radius: 6px;
-
-  padding: 10px 14px;
+  max-width: 1100px;
+  margin: 0 auto 1.2rem;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 1rem 1.8rem;
   box-sizing: border-box;
-
-  transition: 0.15s;
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
 }
 
 .AC-card:hover {
-  background: #f7faff;
-  border-color: #c8d7eb;
+  transform: translateY(-3px);
+  background: rgba(15, 23, 42, 0.96);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 /*******************************************
-  LEFT IMAGE
+  LEFT IMAGE (SLEEK)
 ********************************************/
 .AC-image {
-  width: 60px;
-  height: 85px;
-
-  border-radius: 4px;
+  width: 80px;
+  height: 115px;
+  border-radius: 12px;
   overflow: hidden;
-
-  border: 1px solid #d0d0d0;
-  background: #eee;
+  border: 2px solid rgba(255, 255, 255, 0.1);
   flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.AC-card:hover .AC-image {
+  transform: scale(1.05);
+  border-color: var(--color1);
 }
 
 .AC-image img {
@@ -46,234 +52,276 @@
 }
 
 /*******************************************
-  DETAILS SECTION
+  DETAILS SECTION (COMPACT)
 ********************************************/
 .AC-details {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 0 16px;
+  padding: 0 24px;
 }
 
 .AC-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #2c3e50;
-  margin-bottom: 4px;
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 6px;
+  letter-spacing: 0.2px;
 }
 
 .AC-status {
-  font-size: 0.9rem;
-  color: #6d6d6d;
-  margin-bottom: 6px;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 800;
+}
+
+.AC-status b {
+  color: var(--color1);
 }
 
 /*******************************************
-  RATING INPUT
+  RATING INPUT (COMPACT BADGE)
 ********************************************/
 .AC-rating {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
+  margin-bottom: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 6px 12px;
+  border-radius: 10px;
+  width: fit-content;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
 
-  color: #e2b007;
-  font-size: 0.95rem;
+.AC-rating span {
+  font-family: var(--font-title);
+  font-weight: 800;
+  color: var(--color1);
+  font-size: 0.8rem;
 }
 
 .AC-rating input {
-  width: 45px;
-  padding: 3px 4px;
-
-  font-size: 0.9rem;
+  width: 42px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: white;
   text-align: center;
-
-  border: 1px solid #c7c7c7;
-  border-radius: 4px;
+  font-weight: 900;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 2px;
+  transition: all 0.2s ease;
 }
 
 .AC-rating input:focus {
-  border-color: #4a90e2;
+  background: white;
+  color: var(--color5);
   outline: none;
 }
 
 /*******************************************
-  PROGRESS BAR
+  PROGRESS BAR (SLEEK)
 ********************************************/
 .AC-progress {
-  margin-top: 6px;
+  width: 100%;
+  max-width: 350px;
 }
 
 .AC-progress-bar {
   width: 100%;
-  height: 6px;
-  background: #e6e6e6;
-
-  border-radius: 30px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
   overflow: hidden;
 }
 
 .AC-progress-fill {
   height: 100%;
-  background: #4caf50;
-  transition: 0.35s;
+  background: linear-gradient(90deg, var(--color6), var(--color1));
+  box-shadow: 0 0 15px rgba(255, 145, 0, 0.3);
+  transition: width 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .AC-progress-text {
-  margin-top: 4px;
-  font-size: 0.82rem;
-  color: #555;
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 700;
 }
 
 /*******************************************
-  ACTION BUTTONS
+  ACTION BUTTONS (SLEEK)
 ********************************************/
 .AC-actions {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
+  margin-left: 20px;
 }
 
 .AC-btn {
-  padding: 6px 8px;
-
-  border-radius: 4px;
-  border: 1px solid #bfcde0;
-
+  padding: 10px 24px;
+  border-radius: 12px;
+  font-family: var(--font-title);
   font-size: 0.85rem;
-  font-weight: 600;
-
-  background: #f0f4ff;
-  color: #2a4d85;
-
+  font-weight: 900;
   cursor: pointer;
-  transition: 0.15s;
+  transition: all 0.2s ease;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AC-episode {
+  background: var(--color1);
+  color: var(--color5);
+}
+
+.AC-edit {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .AC-btn:hover {
-  background: #e3ecff;
-}
-
-/* Increase Episode Button */
-.AC-episode {
-  background: #e3ffd7;
-  border-color: #9bdc8e;
-  color: #1e6020;
-}
-
-.AC-episode:hover {
-  background: #d4ffcb;
-}
-
-/* Edit Button */
-.AC-edit {
-  background: #eaf3ff;
-  border-color: #b5cdef;
-  color: #2c4d86;
-}
-
-.AC-edit:hover {
-  background: #dceaff;
+  transform: translateY(-2px);
+  background: white;
+  color: var(--color5);
 }
 
 /*******************************************
-  EDIT POPUP
+  EDIT POPUP (REFINED)
 ********************************************/
 .AC-edit-overlay {
   position: fixed;
   inset: 0;
-
-  background: rgba(35, 48, 70, 0.45);
+  background: rgba(10, 18, 30, 0.85);
+  backdrop-filter: blur(20px);
   display: flex;
   justify-content: center;
   align-items: center;
-
-  z-index: 3000;
+  z-index: 10000;
+  animation: fadeIn 0.4s ease;
 }
 
 .AC-edit-box {
-  width: 360px;
-
-  background: #ffffff;
-  border: 1px solid #cfd9ea;
-  border-radius: 6px;
-
-  padding: 18px;
-  animation: malPop 0.2s ease;
-
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
-}
-
-@keyframes malPop {
-  from {
-    opacity: 0;
-    transform: scale(0.92);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  width: 90%;
+  max-width: 400px;
+  background: rgba(15, 23, 42, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 36px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  animation: modalSlide 0.5s ease;
 }
 
 .AC-edit-box h3 {
+  font-family: var(--font-title);
+  color: white;
   text-align: center;
-  color: #2c3e50;
-
-  font-size: 1.1rem;
-  margin-bottom: 15px;
+  margin-bottom: 24px;
+  font-size: 1.5rem;
+  font-weight: 900;
 }
 
-/* Select */
+.AC-edit-box label {
+  display: block;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.75rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 800;
+}
+
 .AC-edit-box select {
   width: 100%;
-  padding: 9px;
-
-  border-radius: 5px;
-  background: #f8f8f8;
-
-  border: 1px solid #c7c7c7;
-  font-size: 0.95rem;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: white;
+  font-size: 1rem;
+  margin-bottom: 30px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22white%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  background-size: 14px;
 }
 
-.AC-edit-box select:focus {
-  border-color: #4a90e2;
-  outline: none;
-}
-
-/* Close Button */
 .AC-close-btn {
   width: 100%;
-  margin-top: 15px;
-
-  padding: 10px;
-
-  border-radius: 5px;
-
-  border: 1px solid #b5b5b5;
-  background: #e0e0e0;
-
-  color: #333;
+  padding: 14px;
+  background: var(--color1);
+  color: var(--color5);
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-title);
+  font-weight: 900;
+  font-size: 1rem;
   cursor: pointer;
-
-  font-weight: 600;
-  transition: 0.15s;
+  transition: all 0.2s ease;
 }
 
 .AC-close-btn:hover {
-  background: #d4d4d4;
+  background: white;
+  transform: translateY(-2px);
 }
 
 /*******************************************
-  RESPONSIVE STYLING
+  RESPONSIVE
 ********************************************/
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .AC-card {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .AC-details {
+    padding: 1rem 0;
+    align-items: center;
   }
 
   .AC-actions {
     flex-direction: row;
-    gap: 10px;
+    margin: 0;
+    width: 100%;
+  }
+
+  .AC-btn {
+    flex: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlide {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

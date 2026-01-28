@@ -1,247 +1,333 @@
+@import url("../../index.css");
+
 /***************************************
   PAGE CONTAINER
 ****************************************/
 .ALP-container {
-  width: 100%;
-  max-width: 950px;
-  margin: 30px auto;
-  padding: 0 10px;
-  font-family: Arial, sans-serif;
+  width: 95%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  min-height: 100vh;
+  position: relative;
 }
 
 /***************************************
-  PAGE TITLE
+  PAGE HEADER (COMPACT & ELITE)
 ****************************************/
 .ALP-title {
-  text-align: center;
-  font-size: 2rem;
-  color: #2c3e50;
-  font-weight: 700;
-  margin-bottom: 20px;
+  font-family: var(--font-title);
+  font-size: 2.22rem;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 40px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  letter-spacing: -0.5px;
+}
+
+.ALP-title::before {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 32px;
+  background: linear-gradient(to bottom, var(--color1), var(--color6));
+  border-radius: 4px;
 }
 
 /***************************************
-  SEARCH BUTTON
+  TOP BAR (REFINED CONTROLS)
 ****************************************/
+.ALP-top-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 50px;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 24px 32px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
 .ALP-top-buttons {
   display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 20px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .ALP-btn {
-  padding: 10px 16px;
-  background: #eaf3ff;
-  border: 1px solid #b8d0f0;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
+  padding: 12px 32px;
+  background: linear-gradient(135deg, var(--color1), var(--color6));
+  color: var(--color5);
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-title);
+  font-weight: 800;
   font-size: 0.95rem;
-  color: #2c4d86;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .ALP-btn:hover {
-  background: #dceaff;
+  transform: translateY(-3px);
+  background: white;
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
 }
 
 /***************************************
-  FILTER BUTTONS
+  FILTER BUTTONS (SLEEK TABS)
 ****************************************/
 .ALP-filters {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 10px;
-  margin: 20px 0;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .ALP-filter-btn {
-  padding: 7px 13px;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.9rem;
-
-  border: 1px solid #cfd9ea;
-  background: #f1f4f9;
-  color: #2c3e50;
+  padding: 8px 20px;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.4);
   cursor: pointer;
-
-  transition: 0.15s;
-}
-
-.ALP-filter-btn.active {
-  background: #4caf50;
-  color: white;
-  border-color: #3f9a42;
+  transition: all 0.2s ease;
 }
 
 .ALP-filter-btn:hover {
-  background: #e3e9f3;
+  color: white;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.ALP-filter-btn.active {
+  background: white;
+  color: var(--color5);
+  border-color: white;
 }
 
 /***************************************
-  SEARCH POPUP OVERLAY
+  SEARCH POPUP (REFINED)
 ****************************************/
 .ALP-popup-overlay {
   position: fixed;
   inset: 0;
-
-  background: rgba(35, 48, 70, 0.55);
+  background: rgba(10, 18, 30, 0.85);
+  backdrop-filter: blur(20px);
   display: flex;
   justify-content: center;
   align-items: center;
-
-  z-index: 2000;
+  z-index: 10000;
 }
 
-/***************************************
-  POPUP BOX
-****************************************/
 .ALP-popup {
-  width: 550px;
-  max-width: 90%;
-  max-height: 85vh;
-  overflow-y: auto;
-
-  padding: 20px;
-  background: #ffffff;
-  border: 1px solid #ced7e6;
-  border-radius: 8px;
-
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
-  animation: fadePop 0.2s ease;
+  width: 700px;
+  max-width: 95%;
+  height: 80vh;
+  padding: 40px;
+  background: rgba(15, 23, 42, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 28px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
-@keyframes fadePop {
-  from {
-    opacity: 0;
-    transform: translateY(10px) scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/***************************************
-  CLOSE BUTTON
-****************************************/
 .ALP-close {
-  float: right;
-  padding: 5px 12px;
-
-  background: #e2e2e2;
-  border: 1px solid #b5b5b5;
-
-  border-radius: 5px;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-
-  font-weight: 600;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  z-index: 10;
 }
 
 .ALP-close:hover {
-  background: #d5d5d5;
+  background: #f87171;
+  border-color: #f87171;
+  transform: rotate(90deg);
+}
+
+.ALP-popup h3 {
+  font-family: var(--font-title);
+  color: white;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
 }
 
 /***************************************
-  SEARCH INPUT
+  SEARCH FORM UI (SLEEK)
 ****************************************/
 .ALP-search-input {
   width: 100%;
-  padding: 12px;
-  border-radius: 6px;
-
-  border: 1px solid #c7c7c7;
-  font-size: 0.95rem;
-  margin-bottom: 12px;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  color: white;
+  font-size: 1.1rem;
+  font-family: var(--font-title);
+  font-weight: 700;
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
 }
 
 .ALP-search-input:focus {
   outline: none;
-  border-color: #4a90e2;
+  border-color: var(--color1);
+  box-shadow: 0 0 20px rgba(255, 221, 87, 0.2);
 }
 
 /***************************************
-  SEARCH RESULT ENTRY
+  SEARCH RESULTS LIST
 ****************************************/
+.ALP-results-list {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color1) transparent;
+}
+
 .ALP-result {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  padding: 10px 0;
-  border-bottom: 1px solid #eeeeee;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
 }
 
-.ALP-result:last-child {
-  border-bottom: none;
+.ALP-result:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(5px);
 }
 
 .ALP-result-left {
   display: flex;
-  gap: 12px;
+  gap: 15px;
   align-items: center;
 }
 
-.ALP-result img {
-  width: 55px;
-  height: 75px;
+.ALP-result-left img {
+  width: 45px;
+  height: 65px;
+  border-radius: 8px;
   object-fit: cover;
-  border-radius: 4px;
-
-  border: 1px solid #ccc;
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Titles */
 .ALP-result-title {
+  color: white;
+  font-weight: 700;
   font-size: 0.95rem;
-  font-weight: 600;
-  color: #2c3e50;
+  margin-bottom: 2px;
 }
 
 .ALP-result-small {
+  color: rgba(255, 255, 255, 0.3);
   font-size: 0.8rem;
-  color: #666;
 }
 
-/***************************************
-  ADD BUTTON
-****************************************/
 .ALP-add-btn {
-  padding: 6px 12px;
-
+  padding: 8px 16px;
+  background: var(--color1);
+  color: var(--color5);
   border: none;
-  border-radius: 6px;
-
-  background: #4caf50;
-  color: white;
-  font-weight: 600;
-
+  border-radius: 8px;
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: 0.8rem;
   cursor: pointer;
-  font-size: 0.85rem;
-
-  transition: 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .ALP-add-btn:hover {
-  background: #45a047;
+  background: white;
+}
+
+.ALP-no-results {
+  text-align: center;
+  padding: 40px 0;
+  color: rgba(255, 255, 255, 0.3);
+  font-family: var(--font-body);
 }
 
 /***************************************
-  RESPONSIVE STYLING
+  LIST SPACING
 ****************************************/
-@media (max-width: 600px) {
-  .ALP-result img {
-    width: 45px;
-    height: 60px;
+.ALP-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+/***************************************
+  RESPONSIVE
+****************************************/
+@media (max-width: 768px) {
+  .ALP-container {
+    padding: 40px 15px;
   }
 
-  .ALP-result-title {
-    font-size: 0.9rem;
+  .ALP-title {
+    font-size: 1.8rem;
+  }
+
+  .ALP-top-buttons {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
   }
 
   .ALP-popup {
-    padding: 15px;
+    padding: 25px;
+    height: 90vh;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlide {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

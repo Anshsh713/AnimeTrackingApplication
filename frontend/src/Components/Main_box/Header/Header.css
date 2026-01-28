@@ -1,223 +1,421 @@
-@import url("../../../index.css"); /* import root vars */
+@import url("../../../index.css");
 
-/* Global styles */
-* {
-  font-family: var(--font-title); /* default font */
-  box-sizing: border-box; /* include border in size */
-}
+/* =========================================
+   HEADER & NAVIGATION
+   ========================================= */
 
-/* Header container */
+/* Header Container */
 header {
-  background-color: var(--color6); /* main bg */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* shadow */
-  margin: 5px; /* outer margin */
-  height: 70px; /* header height */
-  width: calc(100% - 10px); /* full width minus margin */
-  border-radius: 10px; /* rounded corners */
-  padding: 0 1rem; /* side padding */
+  position: sticky;
+  top: 10px;
+  z-index: 1000;
+  margin: 10px auto;
+  width: 95%;
+  /* Clean margins on sides */
+  max-width: 1400px;
+  /* Constrain max width for large screens */
+  height: 70px;
+  border-radius: 16px;
+  /* Smooth corners */
+  padding: 0 1.5rem;
+
+  /* GLASSMORPHISM EFFECT */
+  background: rgba(var(--color6-rgb), 0.15);
+  /* Fallback */
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+
+  transition: all 0.3s ease;
 }
 
-/* Nav bar */
+header:hover {
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Dark Mode Adjustments */
+[data-theme="dark"] header {
+  background: rgba(10, 37, 64, 0.6);
+  /* --color5 with opacity */
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Nav Wrapper */
 nav {
-  width: 100%; /* full width */
-  height: 100%; /* full height */
-  display: flex; /* flex layout */
-  justify-content: space-between; /* space between logo and links */
-  align-items: center; /* center vertically */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Logo wrapper */
+/* =========================================
+   LOGO
+   ========================================= */
 .main-box {
-  display: flex; /* flex row */
-  align-items: center; /* center logo */
+  display: flex;
+  align-items: center;
 }
 
-/* Logo box */
 .Logo {
-  width: 10rem; /* logo width */
-  display: flex; /* flex */
-  align-items: center; /* center vertically */
+  width: 140px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Logo image */
+.Logo:hover {
+  transform: scale(1.05) rotate(-2deg);
+}
+
 .Logo img {
-  width: 100%; /* fill box */
-  height: auto; /* keep ratio */
-  object-fit: contain; /* no crop */
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-/* Nav links (desktop default) */
+/* =========================================
+   NAV LINKS
+   ========================================= */
 .nav-links {
-  display: flex; /* row layout */
-  align-items: center; /* center vertically */
-  list-style: none; /* remove bullets */
-  gap: 40px; /* space between items */
-  margin: 0; /* no margin */
-  padding: 0; /* no padding */
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
 }
 
-/* Nav icon */
+.nav-links li {
+  position: relative;
+}
+
+/* Icons */
+.nav-icon {
+  position: relative;
+  display: flex;
+  /* Center icon */
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--color5);
+  /* Default icon color */
+  overflow: hidden;
+}
+
+[data-theme="dark"] .nav-icon {
+  color: #a0aec0;
+  /* Lighter icon in dark mode */
+}
+
 .nav-icon i {
-  font-size: 1.5rem; /* icon size */
-  color: var(--color5); /* default icon color */
+  font-size: 1.4rem;
+  z-index: 2;
+  transition: transform 0.3s ease;
 }
 
-/* Solid icon active color */
-.nav-icon i.fa-solid {
-  color: var(--color1); /* active color */
+/* Hover Effects */
+.nav-icon:hover {
+  background: rgba(255, 255, 255, 0.15);
+  /* Subtle bg on hover */
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Icon hover */
-.nav-icon i:hover {
-  color: var(--color2); /* hover color */
+.nav-icon:hover i {
+  color: var(--color3);
+  /* Hover color */
+  transform: scale(1.1);
 }
 
-/* User section wrapper */
+/* Active State */
+.nav-icon.active {
+  background: var(--color3);
+  /* Active BG */
+  box-shadow: 0 4px 15px rgba(0, 80, 157, 0.4);
+}
+
+.nav-icon.active i {
+  color: white !important;
+  /* Force white icon on active */
+}
+
+[data-theme="dark"] .nav-icon.active {
+  background: var(--color1);
+  /* Yellow active in dark mode */
+}
+
+[data-theme="dark"] .nav-icon.active i {
+  color: var(--color5) !important;
+  /* Dark icon on yellow */
+}
+
+
+/* =========================================
+   USER SECTION
+   ========================================= */
 .user-section {
-  display: flex; /* row */
-  align-items: center; /* center vertically */
-  gap: 5px; /* space between name and icons */
-  margin-left: 1rem; /* space from nav icons */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 6px 12px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
 }
 
-/* Username text */
+.user-section:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
 .user-name {
-  font-size: 1.1rem; /* text size */
-  color: var(--textcolor); /* text color */
-  font-weight: 500; /* slightly bold */
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--textcolor);
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* User section icon size */
-.user-section i {
-  font-size: 1.9rem; /* avatar icon size */
-}
-/* Dropdown menu container */
-.dropdown-menu {
-  position: absolute; /* float over content */
-  top: 3.5rem; /* below header */
-  right: 2rem; /* near right edge */
-  background: var(--color4); /* dropdown bg */
-  border-radius: 10px; /* rounded corners */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* shadow */
-  overflow: hidden; /* hide overflow */
-  animation: fadeIn 0.2s ease-in-out; /* fade animation */
-  display: flex; /* column layout */
-  flex-direction: column; /* vertical */
-  min-width: 150px; /* minimum width */
-  z-index: 9999; /* above all */
+/* Dropdown Toggle */
+.user-section button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  transition: background 0.2s;
 }
 
-/* Dropdown buttons */
-.dropdown-menu button {
-  background: transparent; /* no bg */
-  border: none; /* no border */
-  color: var(--color6); /* text color */
-  text-align: left; /* align left */
-  padding: 0.8rem 1.2rem; /* inner spacing */
-  font-size: 0.95rem; /* font size */
-  cursor: pointer; /* pointer cursor */
+.user-section button:hover {
+  background: rgba(0, 0, 0, 0.05);
 }
 
-/* Dropdown hover */
-.dropdown-menu button:hover {
-  background: var(--color3); /* hover bg */
-  color: var(--color7); /* hover text color */
+[data-theme="dark"] .user-section button:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
-/* Logout button style */
-.dropdown-menu .logout {
-  color: var(--color1); /* highlight color */
-  font-weight: 600; /* bold */
+#down i {
+  font-size: 0.85rem;
+  color: var(--textcolor);
+  transition: transform 0.3s ease;
 }
 
-/* Avatar image */
+/* Avatar */
 .header-avatar {
-  width: 34px; /* avatar size */
-  height: 34px; /* avatar size */
-  border-radius: 50%; /* circular */
-  object-fit: cover; /* cover box */
-  border: 2px solid var(--color1); /* border color */
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
-/* Avatar NavLink */
-.profile-avatar-link {
-  display: flex; /* center */
-  align-items: center; /* vertical center */
-  justify-content: center; /* horizontal center */
+[data-theme="dark"] .header-avatar {
+  border-color: var(--color1);
 }
 
-/* Mobile menu button (hamburger) */
-.mobile-menu-btn {
-  display: none; /* hidden on desktop */
-  border: none; /* no border */
-  background: transparent; /* clear bg */
-  font-size: 1.8rem; /* icon size */
-  cursor: pointer; /* pointer cursor */
+.profile-avatar-link:hover .header-avatar {
+  transform: scale(1.1);
 }
 
-/* Mobile menu icon color */
-.mobile-menu-btn i {
-  color: var(--color1); /* icon color */
+/* =========================================
+   DROPDOWN MENU
+   ========================================= */
+.dropdown-menu {
+  position: absolute;
+  top: 75px;
+  right: 1.5rem;
+  background: rgba(255, 255, 255, 0.85);
+  /* Glassy white */
+  backdrop-filter: blur(15px);
+  padding: 8px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+  z-index: 1001;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  animation: menuSlideIn 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-origin: top right;
 }
 
-/* Fade in animation */
-@keyframes fadeIn {
+[data-theme="dark"] .dropdown-menu {
+  background: rgba(20, 20, 30, 0.9);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-menu button {
+  background: transparent;
+  border: none;
+  width: 100%;
+  padding: 10px 16px;
+  text-align: left;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--textcolor);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dropdown-menu button:hover {
+  background: var(--color3);
+  color: white;
+  transform: translateX(4px);
+}
+
+[data-theme="dark"] .dropdown-menu button:hover {
+  background: var(--color1);
+  color: var(--color5);
+}
+
+.dropdown-menu .logout {
+  color: #e53e3e;
+  /* Red for logout */
+  margin-top: 4px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 0 0 8px 8px;
+}
+
+[data-theme="dark"] .dropdown-menu .logout {
+  border-top-color: rgba(255, 255, 255, 0.1);
+  color: #ff6b6b;
+}
+
+.dropdown-menu .logout:hover {
+  background: #fff5f5;
+  color: #e53e3e;
+}
+
+[data-theme="dark"] .dropdown-menu .logout:hover {
+  background: rgba(229, 62, 62, 0.15);
+}
+
+@keyframes menuSlideIn {
   from {
-    opacity: 0; /* start invisible */
-    transform: translateY(-8px); /* move up */
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
   }
+
   to {
-    opacity: 1; /* visible */
-    transform: translateY(0); /* normal position */
+    opacity: 1;
+    transform: scale(1) translateY(0);
   }
 }
 
-/* ---- Responsiveness ---- */
+/* =========================================
+   MOBILE
+   ========================================= */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: var(--textcolor);
+  cursor: pointer;
+  padding: 5px;
+}
 
-/* Medium screens: slight adjustments */
 @media (max-width: 900px) {
-  .nav-links {
-    gap: 25px; /* reduce gap */
+  header {
+    padding: 0 1rem;
+    height: 65px;
   }
 
   .user-name {
-    display: none; /* hide name if tight */
+    display: none;
+    /* Hide name on tablet */
   }
 }
 
-/* Small screens: mobile layout */
 @media (max-width: 700px) {
-  /* Show mobile button */
-  .mobile-menu-btn {
-    display: block; /* show hamburger */
-  }
-
-  /* Hide desktop nav by default */
   .nav-links {
-    display: none; /* hide menu */
+    display: none;
   }
 
-  /* When mobile nav open, show as dropdown panel */
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  /* Mobile Nav Open */
   .nav-links.nav-links-open {
-    display: flex; /* show menu */
-    flex-direction: column; /* vertical list */
-    position: absolute; /* overlay */
-    top: 70px; /* below header */
-    left: 0; /* full width */
-    right: 0; /* full width */
-    background-color: var(--color6); /* same bg as header */
-    padding: 1rem 1.5rem 1.5rem; /* padding around */
-    gap: 1rem; /* vertical gap */
-    z-index: 999; /* above content */
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 75px;
+    left: 2.5%;
+    right: 2.5%;
+    width: 95%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+    align-items: stretch;
+    /* Full width items */
+    gap: 10px;
+    z-index: 999;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    animation: mobileMenuDrop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
-  /* User section stacked nicely */
+  [data-theme="dark"] .nav-links.nav-links-open {
+    background: rgba(15, 23, 42, 0.95);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Mobile Items */
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-icon {
+    width: 100%;
+    /* Full width bars */
+    height: 50px;
+    justify-content: flex-start;
+    padding-left: 20px;
+    border-radius: 10px;
+  }
+
+  /* Add labels for mobile icons if possible, or just center them */
+  .nav-icon {
+    justify-content: center;
+  }
+
   .user-section {
-    margin-left: 0; /* reset margin */
-    justify-content: flex-start; /* left aligned */
+    margin-top: 10px;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.03);
+    width: 100%;
+  }
+}
+
+@keyframes mobileMenuDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.98);
   }
 
-  header {
-    height: 70px; /* keep header height */
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }

@@ -1,121 +1,263 @@
-/* ============================
-   Main Wrapper
-============================ */
-.create-club {
-  max-width: 600px; /* Centered narrow width */
-  margin: 0 auto; /* Center horizontally */
-  padding: 30px; /* Inner spacing */
-  color: white; /* Text color */
-  animation: fadeIn 0.4s ease; /* Page entry animation */
+@import url("../../index.css");
+
+/***************************************
+  PAGE CONTAINER
+****************************************/
+.CC-container {
+  width: 95%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Page Title */
-.create-club h1 {
-  font-size: 34px; /* Large title */
-  font-weight: 700; /* Bold */
-  margin-bottom: 25px; /* Space below */
-  text-align: center; /* Center text */
-  color: #dcdcff; /* Light purple */
+/***************************************
+  HEADER & BACK BUTTON
+****************************************/
+.CC-header {
+  margin-bottom: 30px;
 }
 
-/* ============================
-   Inputs
-============================ */
-.create-club input,
-.create-club textarea {
-  width: 100%; /* Full width inputs */
-  padding: 12px 15px; /* Comfortable size */
-  margin: 10px 0; /* Space between fields */
-  background: rgba(25, 25, 35, 0.8); /* Dark glass bg */
-  border: 1px solid rgba(130, 130, 255, 0.3); /* Soft border */
-  border-radius: 10px; /* Rounded corners */
-  color: white; /* White text */
-  font-size: 16px; /* Medium font */
-  outline: none; /* Remove outline */
-  transition: 0.3s ease; /* Smooth focus effect */
+.CC-back-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.4);
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
 }
 
-/* Focus glow */
-.create-club input:focus,
-.create-club textarea:focus {
-  border-color: rgba(160, 160, 255, 0.7); /* Brighter border */
-  box-shadow: 0 0 10px rgba(120, 120, 255, 0.4); /* Glow */
+.CC-back-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(-5px);
 }
 
-/* Textarea adjustments */
-.create-club textarea {
-  min-height: 120px; /* Reasonable height */
-  resize: none; /* Prevent resizing */
+/***************************************
+  FORM CARD
+****************************************/
+.CC-card {
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 32px;
+  padding: 50px;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
+  animation: modalSlideUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* ============================
-   Create Button
-============================ */
-.create-club button {
-  width: 100%; /* Full width */
-  padding: 12px; /* Good height */
-  margin-top: 15px; /* Space above */
-  background: linear-gradient(135deg, #6a5cff, #8a7bff); /* Purple gradient */
-  border: none; /* No border */
-  border-radius: 10px; /* Rounded */
-  color: white; /* White text */
-  font-size: 18px; /* Large text */
-  font-weight: 700; /* Bold */
-  cursor: pointer; /* Clickable */
-  transition: 0.3s ease; /* Hover effect */
-}
-
-/* Button hover */
-.create-club button:hover {
-  background: linear-gradient(135deg, #8d7bff, #a79aff); /* Lighter gradient */
-  transform: translateY(-2px); /* Lift up */
-  box-shadow: 0 4px 12px rgba(140, 130, 255, 0.45); /* Glow shadow */
-}
-
-/* ============================
-   Checkbox Row
-============================ */
-.checkbox-row {
-  display: flex; /* Align items */
-  align-items: center; /* Center vertically */
-  gap: 8px; /* Spacing */
-  margin-top: 8px; /* Space above */
-  font-size: 14px; /* Small text */
-  opacity: 0.85; /* Slight fade */
-}
-
-/* ============================
-   Fade Animation
-============================ */
-@keyframes fadeIn {
+@keyframes modalSlideUp {
   from {
-    opacity: 0; /* Hidden */
-    transform: translateY(12px); /* Slide up */
+    opacity: 0;
+    transform: translateY(30px);
   }
+
   to {
-    opacity: 1; /* Visible */
-    transform: translateY(0); /* Original */
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* ============================
-   Responsive Design
-============================ */
+.CC-card-header {
+  margin-bottom: 40px;
+}
+
+.CC-card-header h1 {
+  font-family: var(--font-title);
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: white;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+
+.CC-card-header p {
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 500;
+}
+
+/***************************************
+  INPUT FIELDS
+****************************************/
+.CC-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.CC-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.CC-input-group label {
+  font-family: var(--font-title);
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--color1);
+  letter-spacing: 1px;
+}
+
+.CC-input-group input,
+.CC-input-group textarea {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  color: white;
+  padding: 16px 20px;
+  font-size: 1.05rem;
+  font-family: var(--font-body);
+  transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.CC-input-group textarea {
+  min-height: 120px;
+  resize: none;
+}
+
+.CC-input-group input:focus,
+.CC-input-group textarea:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--color1);
+  box-shadow: 0 0 20px rgba(255, 221, 87, 0.15);
+  transform: translateY(-2px);
+}
+
+/***************************************
+  LIMIT SECTION
+****************************************/
+.CC-limit-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.CC-checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.CC-checkbox-wrapper {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.CC-checkbox-wrapper input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.CC-checkbox-mark {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.CC-checkbox-wrapper input:checked~.CC-checkbox-mark {
+  background: var(--color1);
+  border-color: var(--color1);
+}
+
+.CC-checkbox-mark::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color5);
+  font-weight: 900;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.CC-checkbox-wrapper input:checked~.CC-checkbox-mark::after {
+  opacity: 1;
+}
+
+.CC-checkbox-row span {
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.CC-input-group.compact {
+  flex: 0 0 150px;
+  gap: 5px;
+}
+
+.CC-input-group.compact input {
+  padding: 10px 15px;
+  font-size: 1rem;
+}
+
+/***************************************
+  SUBMIT BUTTON
+****************************************/
+.CC-submit-btn {
+  background: linear-gradient(135deg, var(--color1), var(--color6));
+  color: var(--color5);
+  border: none;
+  padding: 18px;
+  border-radius: 16px;
+  font-family: var(--font-title);
+  font-weight: 900;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.CC-submit-btn:hover {
+  transform: translateY(-3px);
+  background: white;
+  box-shadow: 0 15px 30px rgba(255, 255, 255, 0.15);
+}
+
+/***************************************
+  RESPONSIVE
+****************************************/
 @media (max-width: 600px) {
-  .create-club {
-    padding: 20px; /* Smaller padding */
+  .CC-card {
+    padding: 30px;
+    border-radius: 20px;
   }
 
-  .create-club h1 {
-    font-size: 28px; /* Smaller title */
+  .CC-limit-section {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .create-club input,
-  .create-club textarea {
-    font-size: 15px; /* Slightly smaller text */
-  }
-
-  .create-club button {
-    font-size: 16px; /* Smaller button text */
+  .CC-input-group.compact {
+    width: 100%;
+    flex: auto;
   }
 }

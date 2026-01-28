@@ -1,50 +1,70 @@
+@import url("../../index.css");
+
 /* ===========================================
    DARK OVERLAY BEHIND POPUP
 =========================================== */
 .AFS-overlay {
   position: fixed;
   inset: 0;
-
-  background: rgba(0, 0, 0, 0.6);
-
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(15px);
   display: flex;
   justify-content: center;
   align-items: center;
-
-  z-index: 2000;
+  z-index: 10000;
+  animation: fadeIn 0.4s ease;
 }
 
 /* ===========================================
-   POPUP BOX
+   POPUP BOX (REFINED GLASSMORPHISM)
 =========================================== */
 .AFS-box {
-  width: 35%;
-  background-color: var(--color2);
-
-  padding: 2rem;
-  border-radius: 12px;
-
-  box-shadow: 12px 12px 0 rgba(0, 0, 0, 1);
-
-  transition: 0.3s ease;
+  width: 90%;
+  max-width: 400px;
+  background: rgba(15, 23, 42, 0.98);
+  padding: 2.2rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  animation: modalSlide 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
 }
 
-.AFS-box:hover {
-  box-shadow: 18px 18px 0 rgba(0, 0, 0, 1);
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlide {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* Title */
 .AFS-box h2 {
   text-align: center;
-  font-size: 1.8rem;
-  font-weight: 700;
-
-  color: var(--textcolor);
-  margin-bottom: 1.5rem;
+  font-family: var(--font-title);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 1.8rem;
+  letter-spacing: 0.2px;
 }
 
 /* ===========================================
-   FORM FIELDS
+   FORM FIELDS (COMPACT)
 =========================================== */
 .AFS-form {
   display: flex;
@@ -53,82 +73,80 @@
 }
 
 .AFS-form label {
-  color: var(--textcolor);
-  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: -5px;
 }
 
 .AFS-form input {
   width: 100%;
-  padding: 7px;
-
-  border: none;
-  border-bottom: 1px solid var(--color3);
-
-  background: transparent;
-  color: var(--textcolor);
-
-  transition: 0.2s;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  color: white;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
 }
 
 .AFS-form input:focus {
   outline: none;
-  border-bottom: 1.5px solid var(--color3);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--color1);
+}
+
+.AFS-form input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.05);
 }
 
 /* ===========================================
-   BUTTONS
+   BUTTONS (SLEEK)
 =========================================== */
 .AFS-buttons {
-  width: 100%;
   margin-top: 1.2rem;
-
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .AFS-add,
 .AFS-cancel {
-  width: 60%;
-
-  padding: 10px;
-
-  font-size: 1rem;
-  font-weight: 500;
-
-  border: 1px solid var(--textcolor);
-  transition: 0.25s ease;
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  font-family: var(--font-title);
+  font-size: 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .AFS-add {
-  background-color: var(--color6);
+  background: var(--color1);
+  color: var(--color5);
+  border: none;
+}
+
+.AFS-add:hover {
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
 }
 
 .AFS-cancel {
-  background-color: var(--color5);
+  background: rgba(255, 255, 255, 0.05);
   color: white;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.AFS-add:hover,
 .AFS-cancel:hover {
-  border-radius: 40px;
-}
-
-/* ===========================================
-   RESPONSIVE STYLES
-=========================================== */
-@media (max-width: 768px) {
-  .AFS-box {
-    width: 70%;
-  }
-}
-
-@media (max-width: 425px) {
-  .AFS-box {
-    width: 85%;
-    padding: 1.5rem;
-  }
-
-  .AFS-box h2 {
-    font-size: 1.5rem;
-  }
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
 }

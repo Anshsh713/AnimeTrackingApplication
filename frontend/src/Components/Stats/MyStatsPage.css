@@ -1,171 +1,218 @@
-/* MAIN CONTAINER */
+@import url("../../index.css");
+
+/* MAIN CONTAINER (CINEMATIC) */
 .stats-container {
   width: 100%;
-  background: var(--background);
-  border-radius: 14px;
-  padding: 20px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  font-family: "Poppins", sans-serif;
+  padding: 30px;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  font-family: var(--font-body);
   max-width: 900px;
   margin: 0 auto;
+  position: relative;
+  overflow: hidden;
 }
 
 /* PAGE TITLE */
 .stats-title {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  color: var(--textcolor);
-  text-align: center;
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 25px;
+  color: white;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-/* CARD STYLE */
+.stats-title::before {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 24px;
+  background: linear-gradient(to bottom, var(--color1), var(--color6));
+  border-radius: 4px;
+}
+
+/* CARD STYLE (GLASS PANEL) */
 .stats-card {
-  background: #dbdbdb;
-  padding: 18px;
-  border-radius: 12px;
-  margin-bottom: 18px;
-  border: 1px solid #e0e0e0;
-  transition: 0.25s;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 24px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 }
 
 .stats-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 /* CARD TITLE */
 .stats-card h2 {
-  font-size: 18px;
-  font-weight: 600;
-  border-left: 4px solid #4caf50;
-  padding-left: 10px;
-  margin-bottom: 12px;
-  color: #37474f;
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+  color: white;
+  letter-spacing: 0.5px;
 }
 
 /* TEXT LINE */
 .stats-line {
-  margin: 7px 0;
-  font-size: 15px;
-  color: #444;
+  margin: 10px 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 8px;
 }
 
-/* GRID FOR STATUS */
+.stats-line b {
+  color: white;
+  font-weight: 700;
+}
+
+/* GRID FOR STATUS (CHIPS) */
 .stats-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
 }
 
 .stats-grid p {
-  background: #e8f5e9;
-  padding: 10px;
-  border-radius: 6px;
-  font-size: 14px;
+  padding: 12px;
+  border-radius: 14px;
+  font-size: 0.85rem;
   text-align: center;
-  border-left: 3px solid #4caf50;
+  font-weight: 800;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stats-grid p span {
+  font-size: 1.1rem;
+  font-family: var(--font-title);
+}
+
+/* Status Colors */
+.status-watching {
+  background: rgba(59, 130, 246, 0.1);
+  color: #60a5fa;
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.status-completed {
+  background: rgba(34, 197, 94, 0.1);
+  color: #4ade80;
+  border-color: rgba(34, 197, 94, 0.2);
+}
+
+.status-onhold {
+  background: rgba(234, 179, 8, 0.1);
+  color: #facc15;
+  border-color: rgba(234, 179, 8, 0.2);
+}
+
+.status-dropped {
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.status-plan {
+  background: rgba(168, 85, 247, 0.1);
+  color: #c084fc;
+  border-color: rgba(168, 85, 247, 0.2);
 }
 
 /* TOP RATED SECTION */
 .top-rated-item {
   display: flex;
-  gap: 14px;
-  background: #f5f5f5;
-  padding: 10px;
-  border-radius: 10px;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 14px;
+  border-radius: 16px;
   margin-bottom: 12px;
-  border: 1px solid #ddd;
-  transition: 0.2s;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .top-rated-item:hover {
-  background: #eeeeee;
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(8px);
 }
 
 .top-rated-item img {
-  width: 60px;
-  height: 85px;
-  border-radius: 6px;
+  width: 55px;
+  height: 80px;
+  border-radius: 10px;
   object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.top-rated-item div {
+.top-rated-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.top-rated-item p {
-  margin: 0;
-  font-size: 14px;
-  color: #333;
+.top-rated-info .title {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.top-rated-info .rating {
+  font-family: var(--font-title);
+  font-size: 0.9rem;
+  color: var(--color1);
+  font-weight: 800;
 }
 
 /* ========================================= */
 /*              RESPONSIVE STYLES            */
 /* ========================================= */
 
-/* Tablets */
 @media (max-width: 768px) {
   .stats-container {
-    padding: 15px;
+    padding: 20px;
   }
 
   .stats-title {
-    font-size: 20px;
-  }
-
-  .stats-card {
-    padding: 15px;
-  }
-
-  .top-rated-item img {
-    width: 55px;
-    height: 80px;
-  }
-}
-
-/* Large Mobile */
-@media (max-width: 480px) {
-  .stats-title {
-    font-size: 18px;
+    font-size: 1.3rem;
   }
 
   .stats-grid {
-    grid-template-columns: 1fr; /* single column */
+    grid-template-columns: repeat(2, 1fr);
   }
+}
 
-  .top-rated-item {
-    gap: 10px;
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
   }
 
   .top-rated-item img {
     width: 50px;
     height: 72px;
-  }
-
-  .stats-line {
-    font-size: 14px;
-  }
-}
-
-/* Small Mobile */
-@media (max-width: 360px) {
-  .stats-container {
-    padding: 12px;
-  }
-
-  .stats-card {
-    padding: 12px;
-  }
-
-  .stats-card h2 {
-    font-size: 16px;
-  }
-
-  .top-rated-item img {
-    width: 45px;
-    height: 65px;
   }
 }
